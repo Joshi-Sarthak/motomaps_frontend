@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input[type="radio"]:focus {
+	@apply outline-none ring-0;
+}
+
+.custom-radio:checked {
+	background-color: #0e0e0e;
+	border-color: #cacaca;
+}

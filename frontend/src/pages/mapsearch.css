@@ -1,0 +1,180 @@
+/* custom-search-box.css */
+@import "@stadiamaps/maplibre-search-box/dist/style.css";
+
+/* General container styling */
+.stadiamaps-search-box {
+	box-sizing: border-box;
+	width: 300px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 0px;
+}
+
+/* Loading state styling */
+.stadiamaps-search-box.loading .spinner {
+	display: block !important;
+}
+.stadiamaps-search-box.loading .cancel {
+	display: none !important;
+}
+
+/* Input container and input styling */
+.stadiamaps-search-box .input-container {
+	position: relative;
+}
+.stadiamaps-search-box .input-container input {
+	width: 300px;
+	padding: 20px;
+	border-radius: 8px;
+	border: 1px solid #ccc; /* Modify or set the border style as needed */
+	font-size: 14px;
+	outline: none;
+	transition: border-color 0.2s ease;
+}
+
+.stadiamaps-search-box .input-container input:focus {
+	border-color: #000000; /* Optional: Change border color on focus */
+	box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Spinner styling */
+.stadiamaps-search-box .input-container .spinner {
+	position: absolute;
+	right: 10px;
+	top: 12px;
+}
+.stadiamaps-search-box .input-container .spinner.hidden {
+	display: none;
+}
+
+/* Cancel button styling */
+.stadiamaps-search-box .input-container .cancel {
+	background: #aaa;
+	border-radius: 50%;
+	cursor: pointer;
+	display: block;
+	font-size: 1.5rem;
+	height: 20px;
+	opacity: 0.5;
+	position: absolute;
+	right: 10px;
+	top: 12px;
+	width: 20px;
+}
+.stadiamaps-search-box .input-container .cancel:hover,
+.stadiamaps-search-box .input-container .cancel.hover {
+	opacity: 1;
+}
+.stadiamaps-search-box .input-container .cancel:before,
+.stadiamaps-search-box .input-container .cancel:after {
+	background-color: #fff;
+	content: " ";
+	height: 10px;
+	left: 9px;
+	position: absolute;
+	top: 5px;
+	width: 2px;
+}
+.stadiamaps-search-box .input-container .cancel:before {
+	transform: rotate(45deg);
+}
+.stadiamaps-search-box .input-container .cancel:after {
+	transform: rotate(-45deg);
+}
+.stadiamaps-search-box .input-container .cancel.hidden {
+	display: none;
+}
+
+/* Results container styling */
+.stadiamaps-search-box .results {
+	background: #fff;
+	border-radius: 4px;
+	margin-top: 10px;
+	width: 100%;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.stadiamaps-search-box .results.hidden {
+	display: none;
+}
+
+/* Results list styling */
+.stadiamaps-search-box .results .results-list {
+	max-height: 300px;
+	overflow-y: auto;
+}
+.stadiamaps-search-box .results .results-list:first-child {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+/* Individual result styling */
+.stadiamaps-search-box .results .result {
+	border-bottom: 1px solid #eee;
+	cursor: pointer;
+	font-size: 14px;
+	padding: 10px;
+}
+.stadiamaps-search-box .results .result:hover,
+.stadiamaps-search-box .results .result.hover {
+	background: #f0f0f0;
+}
+.stadiamaps-search-box .results .result:last-child {
+	border-bottom: none;
+}
+
+/* No result styling */
+.stadiamaps-search-box .results .no-result {
+	font-style: italic;
+}
+.stadiamaps-search-box .results .no-result:hover,
+.stadiamaps-search-box .results .no-result.hover {
+	background: inherit;
+	cursor: inherit;
+}
+
+/* Result label styling */
+.stadiamaps-search-box .results .result-label {
+	font-weight: 500;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* Result extra info styling */
+.stadiamaps-search-box .results .result-extra {
+	font-size: 0.75rem;
+	font-style: italic;
+	text-transform: uppercase;
+}
+
+/* Hide the search attribution and logo */
+.stadiamaps-search-box .search-attribution {
+	display: none;
+}
+
+/* Loading spinner animation */
+.stadiamaps-search-box .lds-dual-ring {
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+}
+.stadiamaps-search-box .lds-dual-ring:after {
+	animation: lds-dual-ring 1.2s linear infinite;
+	border: 1.5px solid #ccc;
+	border-color: #ccc transparent;
+	border-radius: 50%;
+	content: " ";
+	display: block;
+	height: 16px;
+	margin: 2px;
+	width: 16px;
+}
+@keyframes lds-dual-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

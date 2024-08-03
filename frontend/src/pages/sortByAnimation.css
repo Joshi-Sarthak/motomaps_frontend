@@ -1,0 +1,21 @@
+.radio-slide-enter {
+	transform: translateX(-100%);
+	opacity: 0;
+}
+
+.radio-slide-enter-active {
+	transform: translateX(0);
+	opacity: 1;
+	transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.radio-slide-exit {
+	transform: translateX(0);
+	opacity: 1;
+}
+
+.radio-slide-exit-active {
+	transform: translateX(-100%);
+	opacity: 0;
+	transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+}

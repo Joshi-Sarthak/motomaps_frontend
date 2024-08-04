@@ -100,6 +100,32 @@ export default function RadioVerticalList() {
 					</Typography>
 				</label>
 			</ListItem>
+			<ListItem className="p-0 hover:bg-stone-800 transition-all duration-300">
+				<label
+					htmlFor="vertical-list-ang"
+					className="flex w-full cursor-pointer items-center px-3"
+				>
+					<ListItemPrefix className="mr-2">
+						<Radio
+							name="vertical-list"
+							id="vertical-list-ang"
+							ripple={false}
+							className="custom-radio"
+							containerProps={{
+								className: "px-2",
+							}}
+							checked={radioOption === 4}
+							onChange={() => setRadioOption(4)}
+						/>
+					</ListItemPrefix>
+					<Typography
+						color="blue-gray"
+						className="text-neutral-300 font-kanit font-light"
+					>
+						Nearest to You
+					</Typography>
+				</label>
+			</ListItem>
 		</List>
 	)
 }

@@ -15,6 +15,7 @@ export default function AllRoutes() {
 	const [data, setData] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)
+	const [l, setL] = useState([])
 	const [showRadio, setShowRadio] = useState(false)
 	const { radioOption } = useSelector((state) => state.radio)
 	const dispatch = useDispatch()
@@ -38,6 +39,25 @@ export default function AllRoutes() {
 	}, [dispatch])
 
 	useEffect(() => {
+		const loadLocation = async () => {
+			navigator.geolocation.getCurrentPosition(
+				(position) => {
+					const userLocation = [
+						position.coords.longitude,
+						position.coords.latitude,
+					]
+					console.log(userLocation)
+					setL(userLocation)
+				},
+				(error) => {
+					console.error("Error getting user location:", error)
+				}
+			)
+		}
+		loadLocation()
+	}, [])
+
+	useEffect(() => {
 		const loadAllRoutes = async () => {
 			try {
 				let option
@@ -47,6 +67,8 @@ export default function AllRoutes() {
 					option = "newest"
 				} else if (radioOption === 3) {
 					option = "oldest"
+				} else if (radioOption === 4) {
+					option = "mostliked"
 				}
 				const res = await fetch(
 					`https://motomaps-backend.onrender.com/trip/load-all-${option}`,
@@ -61,6 +83,11 @@ export default function AllRoutes() {
 
 				if (res.ok) {
 					const data = await res.json()
+					console.log(radioOption)
+					if (radioOption === 4) {
+						sortNearest(data, l)
+						return
+					}
 					setData(data)
 				} else {
 					setError("Failed to load data")
@@ -73,7 +100,58 @@ export default function AllRoutes() {
 		}
 
 		loadAllRoutes()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [radioOption])
+
+	function toRadians(degrees) {
+		return degrees * (Math.PI / 180)
+	}
+
+	function haversineDistance(coord1, coord2) {
+		const R = 6371
+
+		const lat1 = toRadians(coord1[0])
+		const lon1 = toRadians(coord1[1])
+		const lat2 = toRadians(coord2[0])
+		const lon2 = toRadians(coord2[1])
+
+		const dLat = lat2 - lat1
+		const dLon = lon2 - lon1
+
+		const a =
+			Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+			Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) * Math.sin(dLon / 2)
+
+		const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+
+		const distance = R * c
+
+		return distance
+	}
+
+	const sortNearest = (d, loc) => {
+		let temp = []
+
+		for (let i = 0; i < d.length; i++) {
+			const element = d[i]
+
+			const s = JSON.parse(element.location.waypointsFeatures)
+			const start = s[0].geometry.coordinates
+			const l = JSON.parse(element.location.waypointsFeatures)
+			const last = l[l.length - 1].geometry.coordinates
+
+			const distance1 = haversineDistance(start, loc)
+			const distance2 = haversineDistance(last, loc)
+			const distance = Math.min(distance1, distance2)
+			console.log(`${distance.toFixed(2)} kilometers.`)
+
+			temp.push({ route: element, d: distance })
+		}
+
+		temp.sort((a, b) => a.d - b.d)
+		const n = temp.slice(0, temp.length).map((item) => item.route)
+		setData(n)
+	}
 
 	if (loading) {
 		return <Loading />

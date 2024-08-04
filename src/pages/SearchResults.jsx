@@ -19,6 +19,7 @@ const SearchResults = () => {
 	const [loading, setLoading] = useState(false)
 	const [emptyErr, setEmptyErr] = useState(false)
 	const [showRadio, setShowRadio] = useState(false)
+	const [l, setL] = useState([])
 	const navigate = useNavigate()
 	const query = useQuery()
 	const dispatch = useDispatch()
@@ -44,6 +45,20 @@ const SearchResults = () => {
 	}, [dispatch])
 
 	useEffect(() => {
+		const loadLocation = async () => {
+			navigator.geolocation.getCurrentPosition((position) => {
+				const userLocation = [
+					position.coords.longitude,
+					position.coords.latitude,
+				]
+
+				setL(userLocation)
+			})
+		}
+		loadLocation()
+	}, [])
+
+	useEffect(() => {
 		const handleSearch = async () => {
 			setLoading(true)
 			try {
@@ -54,6 +69,8 @@ const SearchResults = () => {
 					option = "2"
 				} else if (radioOption === 3) {
 					option = "3"
+				} else if (radioOption === 4) {
+					option = "1"
 				}
 
 				const res = await fetch(
@@ -72,6 +89,11 @@ const SearchResults = () => {
 					if (data.length === 0) {
 						setEmptyErr(true)
 					}
+					if (radioOption === 4) {
+						sortNearest(data, l)
+						setLoading(false)
+						return
+					}
 
 					setResults(data)
 				}
@@ -85,7 +107,57 @@ const SearchResults = () => {
 		if (query) {
 			handleSearch()
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [navigate, query, radioOption])
+
+	function toRadians(degrees) {
+		return degrees * (Math.PI / 180)
+	}
+
+	function haversineDistance(coord1, coord2) {
+		const R = 6371
+
+		const lat1 = toRadians(coord1[0])
+		const lon1 = toRadians(coord1[1])
+		const lat2 = toRadians(coord2[0])
+		const lon2 = toRadians(coord2[1])
+
+		const dLat = lat2 - lat1
+		const dLon = lon2 - lon1
+
+		const a =
+			Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+			Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) * Math.sin(dLon / 2)
+
+		const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+
+		const distance = R * c
+
+		return distance
+	}
+
+	const sortNearest = (d, loc) => {
+		let temp = []
+
+		for (let i = 0; i < d.length; i++) {
+			const element = d[i]
+
+			const s = JSON.parse(element.location.waypointsFeatures)
+			const start = s[0].geometry.coordinates
+			const l = JSON.parse(element.location.waypointsFeatures)
+			const last = l[l.length - 1].geometry.coordinates
+
+			const distance1 = haversineDistance(start, loc)
+			const distance2 = haversineDistance(last, loc)
+			const distance = Math.min(distance1, distance2)
+
+			temp.push({ route: element, d: distance })
+		}
+
+		temp.sort((a, b) => a.d - b.d)
+		const n = temp.slice(0, temp.length).map((item) => item.route)
+		setResults(n)
+	}
 
 	if (loading) {
 		return <Loading />

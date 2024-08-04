@@ -139,6 +139,12 @@ export default function Signup() {
 
 	const sendOTP = async () => {
 		setIsOTPLoading(true)
+
+		if (!formData.email) {
+			setError("Please enter email for OTP verification")
+			setIsOTPLoading(false)
+			return
+		}
 		const res = await fetch("https://motomaps-backend.onrender.com/auth/sendotp", {
 			method: "POST",
 			headers: {
@@ -150,11 +156,14 @@ export default function Signup() {
 		})
 		if (res.ok) {
 			setSentOTP(true)
+			setIsOTPLoading(false)
+			return
 		}
 		if (!res.ok) {
 			setOTPError("Failure to send OTP please try again later")
+			setIsOTPLoading(false)
+			return
 		}
-		setIsOTPLoading(false)
 	}
 
 	const verifyOTP = async () => {

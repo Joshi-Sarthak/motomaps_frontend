@@ -129,7 +129,7 @@ const Card = ({ title, distance, image, user_id, post_id, likes, created_at }) =
 								{distance
 									? Math.round(conversions(distance, "m", "km"))
 									: 0}{" "}
-								kms
+								kms long
 							</p>
 						</div>
 						<div className="mt-2">

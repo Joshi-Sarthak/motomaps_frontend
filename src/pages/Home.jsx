@@ -267,24 +267,25 @@ const Home = () => {
 					</h3>
 					<div className="w-full flex flex-col items-center">
 						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 mb-2">
-							{mostpopular.map((element) => (
-								<div key={element.post_id}>
-									<Card
-										title={element.title}
-										description={element.description}
-										distance={element.distance}
-										image={
-											element.images &&
-											element.images.length > 0 &&
-											element.images[0]
-										}
-										likes={element.likes}
-										post_id={element.post_id}
-										user_id={element.user_id}
-										created_at={element.created_at}
-									/>
-								</div>
-							))}
+							{mostpopular.length > 0 &&
+								mostpopular.map((element) => (
+									<div key={element.post_id}>
+										<Card
+											title={element.title}
+											description={element.description}
+											distance={element.distance}
+											image={
+												element.images &&
+												element.images.length > 0 &&
+												element.images[0]
+											}
+											likes={element.likes}
+											post_id={element.post_id}
+											user_id={element.user_id}
+											created_at={element.created_at}
+										/>
+									</div>
+								))}
 							<div className="w-full flex justify-center">
 								<div className="h-10 md:h-96 mb-2 bg-gradient-to-r bg-stone-900 hover:bg-gradient-to-r font-kanit font-medium rounded-lg text-md py-2.5 text-white transition-all duration-200 ease-in-out transform flex items-center justify-center">
 									<Link to="/all">
@@ -305,24 +306,25 @@ const Home = () => {
 					</h3>
 					<div className="w-full flex flex-col items-center">
 						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 mb-2">
-							{data.map((element) => (
-								<div key={element.post_id}>
-									<Card
-										title={element.title}
-										description={element.description}
-										distance={element.distance}
-										image={
-											element.images &&
-											element.images.length > 0 &&
-											element.images[0]
-										}
-										likes={element.likes}
-										post_id={element.post_id}
-										user_id={element.user_id}
-										created_at={element.created_at}
-									/>
-								</div>
-							))}
+							{data.length > 0 &&
+								data.map((element) => (
+									<div key={element.post_id}>
+										<Card
+											title={element.title}
+											description={element.description}
+											distance={element.distance}
+											image={
+												element.images &&
+												element.images.length > 0 &&
+												element.images[0]
+											}
+											likes={element.likes}
+											post_id={element.post_id}
+											user_id={element.user_id}
+											created_at={element.created_at}
+										/>
+									</div>
+								))}
 							<div className="w-full flex justify-center">
 								<div className="h-10 md:h-96 mb-2 bg-gradient-to-r bg-stone-900 hover:bg-gradient-to-r font-kanit font-medium rounded-lg text-md py-2.5 text-white transition-all duration-200 ease-in-out transform flex items-center justify-center">
 									<Link to="/all">

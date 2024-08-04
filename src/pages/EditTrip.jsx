@@ -32,7 +32,7 @@ export default function AddTrip() {
 	const directionsRef = useRef(null)
 	const location = useLocation()
 	const [direction, setDirections] = useState(null)
-	const [totalDistance, setTotalDistance] = useState(0)
+	const [totalDistance, setTotalDistance] = useState(null)
 	const [error, setError] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const navigate = useNavigate()
@@ -168,8 +168,8 @@ export default function AddTrip() {
 							),
 						}
 
-						if (mapData.distance == 0) {
-							setError("Please add trip on the map")
+						if (direction.waypoints.length < 2) {
+							setError("Please add trip to the map")
 							setLoading(false)
 							return
 						}
@@ -273,7 +273,7 @@ export default function AddTrip() {
 
 				directions.on("removewaypoint", () => {
 					if (directions.waypoints.length < 2) {
-						setTotalDistance(0)
+						setTotalDistance(null)
 					}
 				})
 
@@ -324,7 +324,9 @@ export default function AddTrip() {
 				</div>
 				<p className="text-neutral-200 px-4 mt-4 font-kanit font-light lg:ml-20">
 					Total Route Distance:{" "}
-					{mapData.distance ? (
+					{totalDistance ? (
+						<>{conversions(totalDistance, "m", "km")} km</>
+					) : mapData.distance ? (
 						<>{conversions(mapData.distance, "m", "km")} km</>
 					) : (
 						<>0 km</>

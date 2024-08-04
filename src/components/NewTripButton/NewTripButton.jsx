@@ -14,7 +14,7 @@ const NewTrupButton = () => {
 				onMouseLeave={() => setIsHovered(false)}
 			>
 				<span
-					className={`relative transition-all duration-300 text-3xl font-thin top-[-4px] ${
+					className={`relative transition-all duration-300 text-3xl font-thin top[-2px] md:top-[-4px] ${
 						isHovered ? "opacity-0" : "opacity-100"
 					}`}
 				>

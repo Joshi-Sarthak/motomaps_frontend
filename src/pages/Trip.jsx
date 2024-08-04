@@ -188,7 +188,7 @@ const Trip = () => {
 	useEffect(() => {
 		const userDetails = async () => {
 			const res = await fetch(
-				`https://motomaps-backend.onrender.com/trip/user-details?user_id=${currentUser.user_id}`,
+				`https://motomaps-backend.onrender.com/trip/user-details?user_id=${routeData.user_id}`,
 				{
 					method: "GET",
 					headers: {
@@ -202,10 +202,11 @@ const Trip = () => {
 			console.log(data)
 			setUsername(data[0].username)
 		}
-		if (currentUser.user_id) {
+		if (routeData) {
 			userDetails()
 		}
-	}, [currentUser.user_id])
+		console.log(Date.now())
+	}, [routeData, routeData.user_id])
 
 	const handleRevert = () => {
 		//setconfirmUpdate(false)
@@ -417,7 +418,7 @@ const Trip = () => {
 						{description}
 					</p>
 					<p className="block tracking-wide text-neutral-600 text-sm lg:text-md font-kanit mb-2 mt-4 ml-4">
-						Posted by {routeData.username}{" "}
+						Posted by {username}{" "}
 						<TimeAgo date={created_at} minPeriod={60} />
 					</p>
 				</div>

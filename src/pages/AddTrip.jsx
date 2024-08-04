@@ -352,7 +352,7 @@ export default function AddTrip() {
 								</p>
 							)}
 							<button
-								className={`p-[2px] relative mt-14 mx-auto w-1/3 ${
+								className={`p-[2px] relative mt-5 mx-auto w-1/3 ${
 									loading ? "cursor-not-allowed" : ""
 								}`}
 								type="submit"

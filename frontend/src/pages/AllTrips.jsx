@@ -49,7 +49,7 @@ export default function AllRoutes() {
 					option = "oldest"
 				}
 				const res = await fetch(
-					`http://localhost:4000/trip/load-all-${option}`,
+					`https://motomaps-backend.onrender.com/trip/load-all-${option}`,
 					{
 						method: "GET",
 						headers: {

@@ -104,20 +104,23 @@ export default function AddTrip() {
 							return
 						}
 
-						const res = await fetch(`https://motomaps-backend.onrender.com/trip/save`, {
-							method: "POST",
-							headers: {
-								"Content-Type": "application/json",
-							},
-							credentials: "include",
-							body: JSON.stringify({
-								...formData,
-								id: currentUser.user_id,
-								route,
-								distance: totalDistance,
-								created_at: Date.now(),
-							}),
-						})
+						const res = await fetch(
+							`https://motomaps-backend.onrender.com/trip/save`,
+							{
+								method: "POST",
+								headers: {
+									"Content-Type": "application/json",
+								},
+								credentials: "include",
+								body: JSON.stringify({
+									...formData,
+									id: currentUser.user_id,
+									route,
+									distance: totalDistance,
+									created_at: Date.now(),
+								}),
+							}
+						)
 
 						if (res.ok) {
 							navigate("/all")
@@ -137,7 +140,7 @@ export default function AddTrip() {
 					setError("Upload minimum 1 and maximum 5 images")
 					setLoading(false)
 				}
-			} 
+			}
 		}
 	}
 

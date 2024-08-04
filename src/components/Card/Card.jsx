@@ -58,14 +58,17 @@ const Card = ({ title, distance, image, user_id, post_id, likes, created_at }) =
 		if (isLiked) {
 			setIsLiked(false)
 			setLikeCount((prev) => prev - 1)
-			const res = await fetch(`https://motomaps-backend.onrender.com/trip/unlike`, {
-				method: "DELETE",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ user_id: currentUser.user_id, post_id }),
-				credentials: "include",
-			})
+			const res = await fetch(
+				`https://motomaps-backend.onrender.com/trip/unlike`,
+				{
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ user_id: currentUser.user_id, post_id }),
+					credentials: "include",
+				}
+			)
 
 			const data = await res.json()
 			console.log(data)

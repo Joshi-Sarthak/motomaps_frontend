@@ -265,13 +265,10 @@ const Home = () => {
 					<h3 className="font-kanit font-light mt-8 text-xl text-left ml-6 sm:text-2xl dark:text-white text-black">
 						Most Popular
 					</h3>
-					<div className="flex flex-row justify-center">
-						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4 mb-2">
+					<div className="w-full flex flex-col items-center">
+						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 mb-2">
 							{mostpopular.map((element) => (
-								<div
-									className="mx-auto my-auto py-2 "
-									key={element.post_id}
-								>
+								<div key={element.post_id}>
 									<Card
 										title={element.title}
 										description={element.description}
@@ -288,8 +285,8 @@ const Home = () => {
 									/>
 								</div>
 							))}
-							<div className="w-full h-10 md:h-96 ">
-								<div className="mb-2 w-full h-10 md:h-96 bg-gradient-to-r bg-stone-900 hover:bg-gradient-to-r font-kanit font-medium rounded-lg text-md py-2.5 text-white transition-all duration-200 ease-in-out transform flex items-center justify-center">
+							<div className="w-full flex justify-center">
+								<div className="h-10 md:h-96 mb-2 bg-gradient-to-r bg-stone-900 hover:bg-gradient-to-r font-kanit font-medium rounded-lg text-md py-2.5 text-white transition-all duration-200 ease-in-out transform flex items-center justify-center">
 									<Link to="/all">
 										<span className="hover:underline transition-all duration-300 hover:scale-105 flex flex-row">
 											View More
@@ -306,13 +303,10 @@ const Home = () => {
 					<h3 className="font-kanit font-light mt-4 text-xl text-left ml-6 sm:text-2xl dark:text-white text-black">
 						Near You
 					</h3>
-					<div className="flex flex-row justify-center">
-						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4 mb-2">
+					<div className="w-full flex flex-col items-center">
+						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 mb-2">
 							{data.map((element) => (
-								<div
-									className="mx-auto my-auto py-2 "
-									key={element.post_id}
-								>
+								<div key={element.post_id}>
 									<Card
 										title={element.title}
 										description={element.description}
@@ -329,8 +323,8 @@ const Home = () => {
 									/>
 								</div>
 							))}
-							<div className="w-full h-10 md:h-96 ">
-								<div className="mb-2 w-full h-10 md:h-96 bg-gradient-to-r bg-stone-900 hover:bg-gradient-to-r font-kanit font-medium rounded-lg text-md py-2.5 text-white transition-all duration-200 ease-in-out transform flex items-center justify-center">
+							<div className="w-full flex justify-center">
+								<div className="h-10 md:h-96 mb-2 bg-gradient-to-r bg-stone-900 hover:bg-gradient-to-r font-kanit font-medium rounded-lg text-md py-2.5 text-white transition-all duration-200 ease-in-out transform flex items-center justify-center">
 									<Link to="/all">
 										<span className="hover:underline transition-all duration-300 hover:scale-105 flex flex-row">
 											View More

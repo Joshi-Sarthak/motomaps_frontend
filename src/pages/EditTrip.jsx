@@ -41,10 +41,13 @@ export default function AddTrip() {
 	useEffect(() => {
 		const sendRequest = async () => {
 			try {
-				const res = await fetch(`https://motomaps-backend.onrender.com/checkauth`, {
-					method: "GET",
-					credentials: "include",
-				})
+				const res = await fetch(
+					`https://motomaps-backend.onrender.com/checkauth`,
+					{
+						method: "GET",
+						credentials: "include",
+					}
+				)
 				if (!res.ok) {
 					dispatch(signInFailure())
 					throw new Error("Failed to login, please try again")
@@ -60,13 +63,16 @@ export default function AddTrip() {
 		const loadData = async () => {
 			if (id && !mapData.id) {
 				try {
-					const res = await fetch(`hhttps://motomaps-backend.onrender.com/trip/load/${id}`, {
-						method: "GET",
-						headers: {
-							"Content-Type": "application/json",
-						},
-						credentials: "include",
-					})
+					const res = await fetch(
+						`hhttps://motomaps-backend.onrender.com/trip/load/${id}`,
+						{
+							method: "GET",
+							headers: {
+								"Content-Type": "application/json",
+							},
+							credentials: "include",
+						}
+					)
 					if (!res.ok) {
 						throw new Error("Failed to load data, try again later")
 					}

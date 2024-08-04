@@ -61,13 +61,16 @@ const Trip = () => {
 
 	useEffect(() => {
 		const loadRoute = async () => {
-			const res = await fetch(`https://motomaps-backend.onrender.com/trip/load/${id}`, {
-				method: "GET",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				credentials: "include",
-			})
+			const res = await fetch(
+				`https://motomaps-backend.onrender.com/trip/load/${id}`,
+				{
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					credentials: "include",
+				}
+			)
 
 			if (res.ok) {
 				const data = await res.json()
@@ -213,14 +216,20 @@ const Trip = () => {
 		if (isLiked) {
 			setIsLiked(false)
 			setLikes((prev) => prev - 1)
-			const res = await fetch(`https://motomaps-backend.onrender.com/trip/unlike`, {
-				method: "DELETE",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ user_id: currentUser.user_id, post_id: postId }),
-				credentials: "include",
-			})
+			const res = await fetch(
+				`https://motomaps-backend.onrender.com/trip/unlike`,
+				{
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						user_id: currentUser.user_id,
+						post_id: postId,
+					}),
+					credentials: "include",
+				}
+			)
 
 			const data = await res.json()
 			console.log(data)
@@ -243,14 +252,17 @@ const Trip = () => {
 	}
 
 	const handleDelete = async () => {
-		const res = await fetch(`https://motomaps-backend.onrender.com/trip/delete/${id}`, {
-			method: "DELETE",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ user_id: currentUser.user_id, post_id: postId }),
-			credentials: "include",
-		})
+		const res = await fetch(
+			`https://motomaps-backend.onrender.com/trip/delete/${id}`,
+			{
+				method: "DELETE",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ user_id: currentUser.user_id, post_id: postId }),
+				credentials: "include",
+			}
+		)
 		const data = await res.json()
 		console.log(data)
 
@@ -405,7 +417,7 @@ const Trip = () => {
 						{description}
 					</p>
 					<p className="block tracking-wide text-neutral-600 text-sm lg:text-md font-kanit mb-2 mt-4 ml-4">
-						Posted by {username}{" "}
+						Posted by {routeData.username}{" "}
 						<TimeAgo date={created_at} minPeriod={60} />
 					</p>
 				</div>

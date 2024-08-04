@@ -70,13 +70,12 @@ const SearchResults = () => {
 
 				if (res.ok) {
 					if (data.length === 0) {
-						console.log("empty")
 						setEmptyErr(true)
 					}
-					console.log(res)
+
 					setResults(data)
 				}
-				console.log(data)
+
 				setLoading(false)
 			} catch (e) {
 				console.error(e)

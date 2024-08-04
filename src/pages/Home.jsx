@@ -55,7 +55,6 @@ const Home = () => {
 	}
 
 	const handleChange = (e) => {
-		console.log(e.target.value)
 		setQuery(e.target.value)
 	}
 	const onSubmit = async (e) => {
@@ -71,7 +70,7 @@ const Home = () => {
 						position.coords.longitude,
 						position.coords.latitude,
 					]
-					console.log(userLocation)
+
 					setL(l)
 					loadAllRoutes(userLocation)
 					loadAllRoutesLimited()
@@ -113,7 +112,6 @@ const Home = () => {
 				const distance1 = haversineDistance(start, loc)
 				const distance2 = haversineDistance(last, loc)
 				const distance = Math.min(distance1, distance2)
-				console.log(`${distance.toFixed(2)} kilometers.`)
 
 				temp.push({ route: element, d: distance })
 			}

@@ -27,7 +27,7 @@ const Card = ({ title, distance, image, user_id, post_id, likes, created_at }) =
 			)
 
 			const data = await res.json()
-			console.log(data)
+
 			setIsLiked(data.liked)
 		}
 		isLiked()
@@ -47,36 +47,29 @@ const Card = ({ title, distance, image, user_id, post_id, likes, created_at }) =
 			)
 
 			const data = await res.json()
-			console.log(data)
+
 			setUsername(data[0].username)
 		}
 		userDetails()
-		console.log(Date.now())
 	}, [user_id])
 
 	const handleLike = async () => {
 		if (isLiked) {
 			setIsLiked(false)
 			setLikeCount((prev) => prev - 1)
-			const res = await fetch(
-				`https://motomaps-backend.onrender.com/trip/unlike`,
-				{
-					method: "DELETE",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({ user_id: currentUser.user_id, post_id }),
-					credentials: "include",
-				}
-			)
-
-			const data = await res.json()
-			console.log(data)
+			await fetch(`https://motomaps-backend.onrender.com/trip/unlike`, {
+				method: "DELETE",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ user_id: currentUser.user_id, post_id }),
+				credentials: "include",
+			})
 		} else {
 			setIsLiked(true)
 			setLikeCount((prev) => prev + 1)
 
-			const res = await fetch(`https://motomaps-backend.onrender.com/trip/like`, {
+			await fetch(`https://motomaps-backend.onrender.com/trip/like`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -84,9 +77,6 @@ const Card = ({ title, distance, image, user_id, post_id, likes, created_at }) =
 				body: JSON.stringify({ user_id: currentUser.user_id, post_id }),
 				credentials: "include",
 			})
-
-			const data = await res.json()
-			console.log(data)
 		}
 	}
 

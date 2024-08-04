@@ -61,7 +61,6 @@ export default function Login() {
 				return
 			}
 		} catch (e) {
-			console.log(e)
 			setIsLoading(false)
 		}
 	}
@@ -111,7 +110,6 @@ export default function Login() {
 				return
 			}
 		} catch (e) {
-			console.log(e)
 			setIsLoading(false)
 		}
 	}

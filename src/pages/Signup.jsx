@@ -83,7 +83,6 @@ export default function Signup() {
 				navigate("/home")
 			}
 		} catch (e) {
-			console.log(e)
 			setIsLoading(false)
 		}
 	}
@@ -132,7 +131,6 @@ export default function Signup() {
 				navigate("/home")
 			}
 		} catch (e) {
-			console.log(e)
 			setIsLoading(false)
 		}
 	}

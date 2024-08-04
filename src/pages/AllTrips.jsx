@@ -40,19 +40,14 @@ export default function AllRoutes() {
 
 	useEffect(() => {
 		const loadLocation = async () => {
-			navigator.geolocation.getCurrentPosition(
-				(position) => {
-					const userLocation = [
-						position.coords.longitude,
-						position.coords.latitude,
-					]
-					console.log(userLocation)
-					setL(userLocation)
-				},
-				(error) => {
-					console.error("Error getting user location:", error)
-				}
-			)
+			navigator.geolocation.getCurrentPosition((position) => {
+				const userLocation = [
+					position.coords.longitude,
+					position.coords.latitude,
+				]
+
+				setL(userLocation)
+			})
 		}
 		loadLocation()
 	}, [])
@@ -83,7 +78,7 @@ export default function AllRoutes() {
 
 				if (res.ok) {
 					const data = await res.json()
-					console.log(radioOption)
+
 					if (radioOption === 4) {
 						sortNearest(data, l)
 						return
@@ -130,6 +125,7 @@ export default function AllRoutes() {
 	}
 
 	const sortNearest = (d, loc) => {
+		setLoading(true)
 		let temp = []
 
 		for (let i = 0; i < d.length; i++) {
@@ -143,7 +139,6 @@ export default function AllRoutes() {
 			const distance1 = haversineDistance(start, loc)
 			const distance2 = haversineDistance(last, loc)
 			const distance = Math.min(distance1, distance2)
-			console.log(`${distance.toFixed(2)} kilometers.`)
 
 			temp.push({ route: element, d: distance })
 		}
@@ -151,6 +146,7 @@ export default function AllRoutes() {
 		temp.sort((a, b) => a.d - b.d)
 		const n = temp.slice(0, temp.length).map((item) => item.route)
 		setData(n)
+		setLoading(true)
 	}
 
 	if (loading) {

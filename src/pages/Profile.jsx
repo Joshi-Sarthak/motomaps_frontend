@@ -82,12 +82,10 @@ export default function Profile() {
 					setIsLoading(false)
 				}
 				if (res.ok) {
-					console.log(myPosts)
 					setError(false)
 				}
 				setIsLoading(false)
 			} catch (error) {
-				console.log(error)
 				setIsLoading(false)
 			}
 		}
@@ -115,12 +113,10 @@ export default function Profile() {
 					setIsLoading(false)
 				}
 				if (res.ok) {
-					console.log(myPosts)
 					setError(false)
 				}
 				setIsLoading(false)
 			} catch (error) {
-				console.log(error)
 				setIsLoading(false)
 			}
 			setScreenLoading(false)
@@ -214,13 +210,12 @@ export default function Profile() {
 			const data = await res.json()
 			if (!res.ok) {
 				setError(data.msg)
-				console.log("gg" + error)
 				setIsLoading(false)
 				setconfirmUpdate(false)
 			}
 			if (res.ok) {
 				dispatch(updateUserSuccess(data))
-				console.log("gg no error")
+
 				setUpdateSuccess(true)
 				setconfirmUpdate(false)
 				setError(false)
@@ -228,7 +223,6 @@ export default function Profile() {
 
 			setIsLoading(false)
 		} catch (error) {
-			console.log(error)
 			setIsLoading(false)
 		}
 	}
@@ -268,7 +262,6 @@ export default function Profile() {
 
 			setIsLoading(false)
 		} catch (error) {
-			console.log(error)
 			setIsLoading(false)
 		}
 	}
@@ -280,7 +273,6 @@ export default function Profile() {
 			dispatch(signOut())
 			setIsLoading(false)
 		} catch (error) {
-			console.log(error)
 			setIsLoading(false)
 		}
 	}
@@ -325,8 +317,6 @@ export default function Profile() {
 	if (screenLoading) {
 		return <Loading />
 	}
-
-	console.log(error)
 
 	return (
 		<>

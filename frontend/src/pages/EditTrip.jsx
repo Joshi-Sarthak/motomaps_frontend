@@ -117,6 +117,9 @@ export default function AddTrip() {
 					"state_changed",
 					() => {},
 					(error) => {
+						if (error.code === 'storage/unauthorized') {
+							setError("Only jpeg and png format allowed for images")
+						}
 						reject(error)
 					},
 					() => {

@@ -146,7 +146,7 @@ export default function AddTrip() {
 	const updateRoute = async (e) => {
 		e.preventDefault()
 
-		if (!formData.title || !formData.description) {
+		if (!formData.title || !formData.description || !formData.images) {
 			setLoading(true)
 			setError("Please fill all the fields")
 			setLoading(false)

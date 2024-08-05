@@ -632,12 +632,12 @@ export default function Profile() {
 					className="w-full lg:w-4/12 min-h-screen flex-1 bg-stone-900 border-b lg:border-b-0 lg:border-r border-neutral-700"
 				>
 					<div className="max-w-md ml-8 w-full mb-0 px-4 md:px-8  max-lg:mx-auto mt-2">
-						<h2 className="font-kanit text-xl text-neutral-800 dark:text-neutral-200 mx-auto xl:pr-4 text-center">
+						<h2 className="font-kanit text-xl text-neutral-800 dark:text-neutral-200 pr-2 mx-auto xl:pr-4 text-center">
 							My Posts
 						</h2>
 
 						<div className="flex flex-row min-h-screen">
-							<div className="flex-grow bg-stone-900 flex flex-col lg:flex-row">
+							<div className="flex-grow bg-stone-900 flex flex-col pl-5 lg:pl-0 lg:flex-row">
 								<div className="w-full flex flex-col my-1">
 									<div className="">
 										{myPosts.map((element) => (
@@ -688,7 +688,7 @@ export default function Profile() {
 							Liked Posts
 						</h2>
 						<div className="flex flex-row min-h-screen">
-							<div className="flex-grow bg-stone-900 flex flex-col lg:flex-row">
+							<div className="flex-grow bg-stone-900 flex flex-col pl-5 lg:pl-0 lg:flex-row">
 								<div className="w-full flex flex-col my-1">
 									<div className="">
 										{myLikedPosts.map((element) => (

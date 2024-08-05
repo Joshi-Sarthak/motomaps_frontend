@@ -493,6 +493,7 @@ export default function Profile() {
 													Are you sure you want to update this
 													Account?
 												</h3>
+												<div className="flex justify-center">
 												<div className="flex ml-11 space-x-5">
 													<button
 														type="button"
@@ -531,6 +532,7 @@ export default function Profile() {
 															<> Confirm Update</>
 														)}
 													</button>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -588,7 +590,7 @@ export default function Profile() {
 												account along with it`s posts
 												permanently?
 											</h3>
-											<div className="flex ml-11 space-x-5">
+											<div className="flex justify-center space-x-5">
 												<button
 													type="button"
 													onClick={handleRevert}

@@ -374,7 +374,7 @@ const Trip = () => {
 											Are you sure you want to DELETE this post
 											permanently?
 										</h3>
-										<div className="flex ml-11 space-x-5">
+										<div className="flex justify-center space-x-5">
 											<button
 												type="button"
 												onClick={handleRevert}

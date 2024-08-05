@@ -146,7 +146,7 @@ export default function AddTrip() {
 	const updateRoute = async (e) => {
 		e.preventDefault()
 
-		if (!formData.title || !formData.description || !formData.images) {
+		if (!formData.title || !formData.description || !formData) {
 			setLoading(true)
 			setError("Please fill all the fields")
 			setLoading(false)
@@ -431,7 +431,7 @@ export default function AddTrip() {
 									loading ? "cursor-not-allowed" : ""
 								}`}
 								type="submit"
-								disabled={loading || error}
+								disabled={loading}
 							>
 								<div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-800 rounded-lg" />
 								<div className="px-8 py-2 bg-stone-900 rounded-[8px] relative group transition duration-400 text-white font-kanit hover:bg-transparent">

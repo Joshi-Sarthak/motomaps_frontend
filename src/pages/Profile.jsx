@@ -147,10 +147,15 @@ export default function Profile() {
 
 			// eslint-disable-next-line no-unused-vars
 			(error) => {
-				setImageError(true)
+				if (error.code === 'storage/unauthorized') {
+					setImageError("Only jpeg and png format allowed for images")
+				}else{
+					setImageError("Error Uploading Image")
+				}
 			},
 
 			() => {
+				setImageError(false)
 				getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
 					setFormData({
 						...formData,
@@ -379,7 +384,7 @@ export default function Profile() {
 							<p className="text-md text-center">
 								{imageError ? (
 									<span className="font-kanit font-light text-red-700 text-center">
-										Error Uploading Image
+										{imageError}
 									</span>
 								) : imagePercent > 0 && imagePercent < 100 ? (
 									<span className="text-slate-700 font-kanit font-light text-center">{`Uploading:${imagePercent} %`}</span>

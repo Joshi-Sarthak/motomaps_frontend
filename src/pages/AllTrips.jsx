@@ -164,9 +164,8 @@ export default function AllRoutes() {
 				<div className="flex-grow bg-stone-900 flex flex-col lg:flex-row">
 					<div className="w-full lg:w-1/5 border-b lg:border-b-0 lg:border-r border-neutral-700 my-2 mx-2 lg:my-4 lg:relative">
 						{window.innerWidth < 1024 && (
-							<div className="flex lg:hidden mb-2 font-kanit text-neutral-200 mx-5">
+							<div className="flex lg:hidden mb-2 font-kanit text-neutral-200 mx-5" onClick={() => setShowRadio(!showRadio)}>
 								<KeyboardArrowDownIcon
-									onClick={() => setShowRadio(!showRadio)}
 									className="cursor-pointer text-white mr-2"
 								/>
 								Sort by

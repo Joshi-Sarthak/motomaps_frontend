@@ -128,6 +128,7 @@ export default function AddTrip() {
 						reject(error)
 					},
 					() => {
+						setError(null)
 						getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
 							resolve(downloadURL)
 						})
@@ -431,7 +432,7 @@ export default function AddTrip() {
 									loading ? "cursor-not-allowed" : ""
 								}`}
 								type="submit"
-								disabled={loading}
+								disabled={loading || error=="Only jpeg and png format allowed for images"}
 							>
 								<div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-800 rounded-lg" />
 								<div className="px-8 py-2 bg-stone-900 rounded-[8px] relative group transition duration-400 text-white font-kanit hover:bg-transparent">

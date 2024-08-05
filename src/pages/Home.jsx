@@ -55,7 +55,6 @@ const Home = () => {
 	}
 
 	const handleChange = (e) => {
-		console.log(e.target.value)
 		setQuery(e.target.value)
 	}
 	const onSubmit = async (e) => {
@@ -71,7 +70,7 @@ const Home = () => {
 						position.coords.longitude,
 						position.coords.latitude,
 					]
-					console.log(userLocation)
+
 					setL(l)
 					loadAllRoutes(userLocation)
 					loadAllRoutesLimited()
@@ -100,19 +99,7 @@ const Home = () => {
 		sendRequest()
 
 		const sortNearest = (d, loc) => {
-			let temp = [
-				{ route: d[0], d: 1000000000 },
-				{ route: d[1], d: 1000000000 },
-				{ route: d[2], d: 1000000000 },
-			]
-
-			const swap = (a, b) => {
-				const t = temp[a]
-				temp[a] = temp[b]
-				temp[b] = t
-			}
-
-			console.log(loc)
+			let temp = []
 
 			for (let i = 0; i < d.length; i++) {
 				const element = d[i]
@@ -124,55 +111,14 @@ const Home = () => {
 
 				const distance1 = haversineDistance(start, loc)
 				const distance2 = haversineDistance(last, loc)
-				let distance
-				if (distance1 > distance2) {
-					distance = distance2
-				} else {
-					distance = distance1
-				}
-				console.log(`${distance.toFixed(2)} kilometers.`)
+				const distance = Math.min(distance1, distance2)
 
-				if (i === 0) {
-					temp[0].d = distance
-				} else if (i === 1) {
-					if (temp[0].d > distance) {
-						temp[1].d = distance
-						swap(0, 1)
-					} else {
-						temp[1].d = distance
-					}
-				} else if (i === 2) {
-					if (temp[0].d > distance) {
-						temp[2].d = distance
-						swap(1, 2)
-						swap(0, 1)
-					} else {
-						temp[2].d = distance
-						if (temp[1].d > distance) {
-							swap(1, 2)
-						}
-					}
-				} else {
-					if (temp[0].d > distance) {
-						swap(1, 2)
-						swap(0, 1)
-						temp[0].d = distance
-						temp[0].route = element
-					} else if (temp[1].d > distance) {
-						swap(1, 2)
-						temp[1].route = element
-						temp[1].d = distance
-					} else if (temp[2].d > distance) {
-						temp[2].d = distance
-						temp[2].route = element
-					}
-				}
+				temp.push({ route: element, d: distance })
 			}
 
-			console.log("gg1" + temp[0].route + temp[0].d)
-			console.log("gg1" + temp[1].route + temp[1].d)
-			console.log("gg1" + temp[2].route + temp[2].d)
-			const n = [temp[0].route, temp[1].route, temp[2].route]
+			temp.sort((a, b) => a.d - b.d)
+
+			const n = temp.slice(0, 3).map((item) => item.route)
 			setData(n)
 		}
 
@@ -265,35 +211,40 @@ const Home = () => {
 					<h3 className="font-kanit font-light mt-8 text-xl text-left ml-6 sm:text-2xl dark:text-white text-black">
 						Most Popular
 					</h3>
-					<div className="flex flex-row justify-center">
-						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4 mb-2">
-							{mostpopular.map((element) => (
-								<div
-									className="mx-auto my-auto py-2 "
-									key={element.post_id}
-								>
-									<Card
-										title={element.title}
-										description={element.description}
-										distance={element.distance}
-										image={
-											element.images &&
-											element.images.length > 0 &&
-											element.images[0]
-										}
-										likes={element.likes}
-										post_id={element.post_id}
-										user_id={element.user_id}
-										created_at={element.created_at}
-									/>
-								</div>
-							))}
-							<div className="w-full h-10 md:h-96 ">
-								<div className="mb-2 w-full h-10 md:h-96 bg-gradient-to-r bg-stone-900 hover:bg-gradient-to-r font-kanit font-medium rounded-lg text-md py-2.5 text-white transition-all duration-200 ease-in-out transform flex items-center justify-center">
+					<div className="w-full flex flex-col items-center">
+						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 mb-2">
+							{mostpopular.length !== 0 ? (
+								mostpopular.map((element) => (
+									<div key={element.post_id}>
+										<Card
+											title={element.title}
+											description={element.description}
+											distance={element.distance}
+											image={
+												element.images &&
+												element.images.length > 0 &&
+												element.images[0]
+											}
+											likes={element.likes}
+											post_id={element.post_id}
+											user_id={element.user_id}
+											created_at={element.created_at}
+										/>
+									</div>
+								))
+							) : (
+								<></>
+							)}
+							<div className="w-full flex justify-center">
+								<div className="h-10 md:h-96 mb-2 bg-gradient-to-r bg-stone-900 hover:bg-gradient-to-r font-kanit font-medium rounded-lg text-md py-2.5 text-white transition-all duration-200 ease-in-out transform flex items-center justify-center">
 									<Link to="/all">
 										<span className="hover:underline transition-all duration-300 hover:scale-105 flex flex-row">
-											View More
-											<FaArrowRight className="ml-2 mt-1" />
+											{mostpopular.length == 0
+												? "No posts yet :("
+												: "View More"}
+											{mostpopular.length !== 0 && (
+												<FaArrowRight className="ml-2 mt-1" />
+											)}
 										</span>
 									</Link>
 								</div>
@@ -306,35 +257,40 @@ const Home = () => {
 					<h3 className="font-kanit font-light mt-4 text-xl text-left ml-6 sm:text-2xl dark:text-white text-black">
 						Near You
 					</h3>
-					<div className="flex flex-row justify-center">
-						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4 mb-2">
-							{data.map((element) => (
-								<div
-									className="mx-auto my-auto py-2 "
-									key={element.post_id}
-								>
-									<Card
-										title={element.title}
-										description={element.description}
-										distance={element.distance}
-										image={
-											element.images &&
-											element.images.length > 0 &&
-											element.images[0]
-										}
-										likes={element.likes}
-										post_id={element.post_id}
-										user_id={element.user_id}
-										created_at={element.created_at}
-									/>
-								</div>
-							))}
-							<div className="w-full h-10 md:h-96 ">
-								<div className="mb-2 w-full h-10 md:h-96 bg-gradient-to-r bg-stone-900 hover:bg-gradient-to-r font-kanit font-medium rounded-lg text-md py-2.5 text-white transition-all duration-200 ease-in-out transform flex items-center justify-center">
+					<div className="w-full flex flex-col items-center">
+						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 mb-2">
+							{data.length !== 0 ? (
+								data.map((element) => (
+									<div key={element.post_id}>
+										<Card
+											title={element.title}
+											description={element.description}
+											distance={element.distance}
+											image={
+												element.images &&
+												element.images.length > 0 &&
+												element.images[0]
+											}
+											likes={element.likes}
+											post_id={element.post_id}
+											user_id={element.user_id}
+											created_at={element.created_at}
+										/>
+									</div>
+								))
+							) : (
+								<></>
+							)}
+							<div className="w-full flex justify-center">
+								<div className="h-10 md:h-96 mb-2 bg-gradient-to-r bg-stone-900 hover:bg-gradient-to-r font-kanit font-medium rounded-lg text-md py-2.5 text-white transition-all duration-200 ease-in-out transform flex items-center justify-center">
 									<Link to="/all">
 										<span className="hover:underline transition-all duration-300 hover:scale-105 flex flex-row">
-											View More
-											<FaArrowRight className="ml-2 mt-1" />
+											{data.length == 0
+												? "No posts yet :("
+												: "View More"}
+											{data.length !== 0 && (
+												<FaArrowRight className="ml-2 mt-1" />
+											)}
 										</span>
 									</Link>
 								</div>

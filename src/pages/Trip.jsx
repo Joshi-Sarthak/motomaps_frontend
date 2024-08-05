@@ -61,13 +61,16 @@ const Trip = () => {
 
 	useEffect(() => {
 		const loadRoute = async () => {
-			const res = await fetch(`https://motomaps-backend.onrender.com/trip/load/${id}`, {
-				method: "GET",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				credentials: "include",
-			})
+			const res = await fetch(
+				`https://motomaps-backend.onrender.com/trip/load/${id}`,
+				{
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					credentials: "include",
+				}
+			)
 
 			if (res.ok) {
 				const data = await res.json()
@@ -84,8 +87,6 @@ const Trip = () => {
 				setCreated_at(data.created_at)
 				setLikes(data.likes)
 				setRouteLoaded(true)
-			} else {
-				console.log(res)
 			}
 		}
 
@@ -174,7 +175,7 @@ const Trip = () => {
 			)
 
 			const data = await res.json()
-			console.log(data)
+
 			setIsLiked(data.liked)
 		}
 		if (currentUser.user_id && postId) {
@@ -185,7 +186,7 @@ const Trip = () => {
 	useEffect(() => {
 		const userDetails = async () => {
 			const res = await fetch(
-				`https://motomaps-backend.onrender.com/trip/user-details?user_id=${currentUser.user_id}`,
+				`https://motomaps-backend.onrender.com/trip/user-details?user_id=${routeData.user_id}`,
 				{
 					method: "GET",
 					headers: {
@@ -196,13 +197,13 @@ const Trip = () => {
 			)
 
 			const data = await res.json()
-			console.log(data)
+
 			setUsername(data[0].username)
 		}
-		if (currentUser.user_id) {
+		if (routeData) {
 			userDetails()
 		}
-	}, [currentUser.user_id])
+	}, [routeData, routeData.user_id])
 
 	const handleRevert = () => {
 		//setconfirmUpdate(false)
@@ -213,22 +214,22 @@ const Trip = () => {
 		if (isLiked) {
 			setIsLiked(false)
 			setLikes((prev) => prev - 1)
-			const res = await fetch(`https://motomaps-backend.onrender.com/trip/unlike`, {
+			await fetch(`https://motomaps-backend.onrender.com/trip/unlike`, {
 				method: "DELETE",
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ user_id: currentUser.user_id, post_id: postId }),
+				body: JSON.stringify({
+					user_id: currentUser.user_id,
+					post_id: postId,
+				}),
 				credentials: "include",
 			})
-
-			const data = await res.json()
-			console.log(data)
 		} else {
 			setIsLiked(true)
 			setLikes((prev) => prev + 1)
 
-			const res = await fetch(`https://motomaps-backend.onrender.com/trip/like`, {
+			await fetch(`https://motomaps-backend.onrender.com/trip/like`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -236,23 +237,21 @@ const Trip = () => {
 				body: JSON.stringify({ user_id: currentUser.user_id, post_id: postId }),
 				credentials: "include",
 			})
-
-			const data = await res.json()
-			console.log(data)
 		}
 	}
 
 	const handleDelete = async () => {
-		const res = await fetch(`https://motomaps-backend.onrender.com/trip/delete/${id}`, {
-			method: "DELETE",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ user_id: currentUser.user_id, post_id: postId }),
-			credentials: "include",
-		})
-		const data = await res.json()
-		console.log(data)
+		const res = await fetch(
+			`https://motomaps-backend.onrender.com/trip/delete/${id}`,
+			{
+				method: "DELETE",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ user_id: currentUser.user_id, post_id: postId }),
+				credentials: "include",
+			}
+		)
 
 		if (res.ok) {
 			navigate("/all")

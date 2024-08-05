@@ -3,6 +3,7 @@ import Loading from "../components/Loading/Loading"
 import Card from "../components/Card/Card"
 import Navbar from "../components/Navbar/Navbar"
 import Footer from "../components/Footer/Footer"
+import NewTripButton from "../components/NewTripButton/NewTripButton"
 import { useSelector, useDispatch } from "react-redux"
 import { signInFailure, signInSuccess } from "../redux/user/userSlice"
 
@@ -36,7 +37,7 @@ export default function AllRoutes() {
 		const loadAllRoutes = async () => {
 			try {
 				const res = await fetch(
-					`https://motomaps-backend.onrender.com/trip/load-allmylikedposts/${currentUser.user_id}`,
+					`https://motomaps-backend.onrender.com/trip/load-my/${currentUser.user_id}`,
 					{
 						method: "GET",
 						headers: {
@@ -76,7 +77,7 @@ export default function AllRoutes() {
 			<Navbar />
 			<div className="flex flex-col min-h-screen">
 				<div className="flex-grow bg-stone-900 flex flex-col lg:flex-row">
-					<div className="w-full flex justify-center">
+					<div className="w-full flex flex-col">
 						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 my-4">
 							{data.map((element) => (
 								<div key={element.post_id}>
@@ -97,6 +98,10 @@ export default function AllRoutes() {
 								</div>
 							))}
 						</div>
+					</div>
+
+					<div className="fixed bottom-4 right-4 lg:relative lg:bottom-auto lg:right-auto">
+						<NewTripButton />
 					</div>
 				</div>
 			</div>

@@ -78,7 +78,6 @@ export default function AddTrip() {
 		e.preventDefault()
 
 		if (!formData.title || !formData.description) {
-			console.log(formData)
 			setLoading(true)
 			setError("Please fill all the fields")
 			setLoading(false)
@@ -107,40 +106,41 @@ export default function AddTrip() {
 							return
 						}
 
-						const res = await fetch(`https://motomaps-backend.onrender.com/trip/save`, {
-							method: "POST",
-							headers: {
-								"Content-Type": "application/json",
-							},
-							credentials: "include",
-							body: JSON.stringify({
-								...formData,
-								id: currentUser.user_id,
-								route,
-								distance: totalDistance,
-								created_at: Date.now(),
-							}),
-						})
+						const res = await fetch(
+							`https://motomaps-backend.onrender.com/trip/save`,
+							{
+								method: "POST",
+								headers: {
+									"Content-Type": "application/json",
+								},
+								credentials: "include",
+								body: JSON.stringify({
+									...formData,
+									id: currentUser.user_id,
+									route,
+									distance: totalDistance,
+									created_at: Date.now(),
+								}),
+							}
+						)
 
 						if (res.ok) {
 							navigate("/all")
 						} else {
 							// Handle error
-							console.log("Error:", await res.text())
+
 							setError("Submission failed. Please try again.")
 						}
 					} catch (err) {
-						console.error("Error:", err)
 						setError("Please fill all the fields.")
 					} finally {
 						setLoading(false) // Reset loading to false when done
 					}
 				} else {
-					console.log("Upload at most 5 images")
 					setError("Upload minimum 1 and maximum 5 images")
 					setLoading(false)
 				}
-			} 
+			}
 		}
 	}
 
@@ -176,9 +176,7 @@ export default function AddTrip() {
 	useEffect(() => {
 		if (mapRef.current) {
 			const control = new MapLibreSearchControl({
-				onResultSelected: (feature) => {
-					console.log(feature.geometry.coordinates)
-				},
+				onResultSelected: () => {},
 			})
 
 			const map = new maplibregl.Map({
@@ -352,7 +350,7 @@ export default function AddTrip() {
 								</p>
 							)}
 							<button
-								className={`p-[2px] relative mt-14 mx-auto w-1/3 ${
+								className={`p-[2px] relative mt-5 mx-auto w-1/3 ${
 									loading ? "cursor-not-allowed" : ""
 								}`}
 								type="submit"

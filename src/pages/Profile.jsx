@@ -35,7 +35,7 @@ export default function Profile() {
 	const [myPosts, setMyPosts] = useState([])
 	const [myLikedPosts, setMyLikedPosts] = useState([])
 	const [screenLoading, setScreenLoading] = useState(false)
-	const [confirmDelete,setConfirmDelete] = useState(false)
+	const [confirmDelete, setConfirmDelete] = useState(false)
 
 	const { currentUser } = useSelector((state) => state.user)
 
@@ -82,12 +82,10 @@ export default function Profile() {
 					setIsLoading(false)
 				}
 				if (res.ok) {
-					console.log(myPosts)
 					setError(false)
 				}
 				setIsLoading(false)
 			} catch (error) {
-				console.log(error)
 				setIsLoading(false)
 			}
 		}
@@ -115,12 +113,10 @@ export default function Profile() {
 					setIsLoading(false)
 				}
 				if (res.ok) {
-					console.log(myPosts)
 					setError(false)
 				}
 				setIsLoading(false)
 			} catch (error) {
-				console.log(error)
 				setIsLoading(false)
 			}
 			setScreenLoading(false)
@@ -214,13 +210,12 @@ export default function Profile() {
 			const data = await res.json()
 			if (!res.ok) {
 				setError(data.msg)
-				console.log("gg" + error)
 				setIsLoading(false)
 				setconfirmUpdate(false)
 			}
 			if (res.ok) {
 				dispatch(updateUserSuccess(data))
-				console.log("gg no error")
+
 				setUpdateSuccess(true)
 				setconfirmUpdate(false)
 				setError(false)
@@ -228,7 +223,6 @@ export default function Profile() {
 
 			setIsLoading(false)
 		} catch (error) {
-			console.log(error)
 			setIsLoading(false)
 		}
 	}
@@ -268,7 +262,6 @@ export default function Profile() {
 
 			setIsLoading(false)
 		} catch (error) {
-			console.log(error)
 			setIsLoading(false)
 		}
 	}
@@ -280,7 +273,6 @@ export default function Profile() {
 			dispatch(signOut())
 			setIsLoading(false)
 		} catch (error) {
-			console.log(error)
 			setIsLoading(false)
 		}
 	}
@@ -325,8 +317,6 @@ export default function Profile() {
 	if (screenLoading) {
 		return <Loading />
 	}
-
-	console.log(error)
 
 	return (
 		<>
@@ -568,52 +558,53 @@ export default function Profile() {
 							</div>
 						)}
 
-					{confirmDelete && (
-						<div className="fixed inset-0 backdrop-blur-sm bg-opacity-25 flex justify-center items-center z-[200]">
-							<div className="relative p-4 w-full max-w-md max-h-full">
-								<div className="relative bg-white rounded-lg shadow dark:bg-stone-900">
-									<div className="p-4 md:p-5 text-center">
-										<svg
-											className="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
-											aria-hidden="true"
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 20 20"
-										>
-											<path
-												stroke="currentColor"
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												strokeWidth="2"
-												d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-											/>
-										</svg>
-										<h3 className="font-kanit mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-											Are you sure you want to DELETE this account along with it`s posts
-											permanently?
-										</h3>
-										<div className="flex ml-11 space-x-5">
-											<button
-												type="button"
-												onClick={handleRevert}
-												data-modal-hide="popup-modal"
-												className="font-kanit px-11 py-2 bg-transparent  border border-gray-800 hover:border-gray-400 dark:border-gray-700 dark:text-gray-400 text-black rounded-lg font-medium"
+						{confirmDelete && (
+							<div className="fixed inset-0 backdrop-blur-sm bg-opacity-25 flex justify-center items-center z-[200]">
+								<div className="relative p-4 w-full max-w-md max-h-full">
+									<div className="relative bg-white rounded-lg shadow dark:bg-stone-900">
+										<div className="p-4 md:p-5 text-center">
+											<svg
+												className="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="none"
+												viewBox="0 0 20 20"
 											>
-												Revert
-											</button>
-											<button
-												data-modal-hide="popup-modal"
-												className="font-kanit px-11  hover:bg-red-700 py-1 bg-red-600 rounded-md text-white font-medium"
-												onClick={handleDeleteAccount}
-											>
-												Delete
-											</button>
+												<path
+													stroke="currentColor"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth="2"
+													d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+												/>
+											</svg>
+											<h3 className="font-kanit mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+												Are you sure you want to DELETE this
+												account along with it`s posts
+												permanently?
+											</h3>
+											<div className="flex ml-11 space-x-5">
+												<button
+													type="button"
+													onClick={handleRevert}
+													data-modal-hide="popup-modal"
+													className="font-kanit px-11 py-2 bg-transparent  border border-gray-800 hover:border-gray-400 dark:border-gray-700 dark:text-gray-400 text-black rounded-lg font-medium"
+												>
+													Revert
+												</button>
+												<button
+													data-modal-hide="popup-modal"
+													className="font-kanit px-11  hover:bg-red-700 py-1 bg-red-600 rounded-md text-white font-medium"
+													onClick={handleDeleteAccount}
+												>
+													Delete
+												</button>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					)}
+						)}
 
 						{error ? (
 							<p className="font-kanit font-light text-red-700 mt-5">
@@ -642,7 +633,7 @@ export default function Profile() {
 
 						<div className="flex flex-row min-h-screen">
 							<div className="flex-grow bg-stone-900 flex flex-col lg:flex-row">
-								<div className="w-full flex justify-center my-1">
+								<div className="w-full flex flex-col my-1">
 									<div className="">
 										{myPosts.map((element) => (
 											<div className="my-2" key={element.post_id}>
@@ -693,7 +684,7 @@ export default function Profile() {
 						</h2>
 						<div className="flex flex-row min-h-screen">
 							<div className="flex-grow bg-stone-900 flex flex-col lg:flex-row">
-								<div className="w-full flex justify-center my-1">
+								<div className="w-full flex flex-col my-1">
 									<div className="">
 										{myLikedPosts.map((element) => (
 											<div className="my-2" key={element.post_id}>

@@ -34,14 +34,17 @@ export default function Login() {
 		}
 
 		try {
-			const res = await fetch("https://motomaps-backend.onrender.com/auth/login", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(formData),
-				credentials: "include",
-			})
+			const res = await fetch(
+				"https://motomaps-backend.onrender.com/auth/login",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(formData),
+					credentials: "include",
+				}
+			)
 			const data = await res.json()
 
 			if (!res.ok) {
@@ -58,7 +61,6 @@ export default function Login() {
 				return
 			}
 		} catch (e) {
-			console.log(e)
 			setIsLoading(false)
 		}
 	}
@@ -76,18 +78,21 @@ export default function Login() {
 			const auth = getAuth(app)
 			const result = await signInWithPopup(auth, provider)
 
-			const res = await fetch("https://motomaps-backend.onrender.com/auth/google", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					name: result.user.displayName,
-					email: result.user.email,
-					profile_pic: result.user.photoURL,
-				}),
-				credentials: "include",
-			})
+			const res = await fetch(
+				"https://motomaps-backend.onrender.com/auth/google",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						name: result.user.displayName,
+						email: result.user.email,
+						profile_pic: result.user.photoURL,
+					}),
+					credentials: "include",
+				}
+			)
 
 			const data = await res.json()
 
@@ -105,7 +110,6 @@ export default function Login() {
 				return
 			}
 		} catch (e) {
-			console.log(e)
 			setIsLoading(false)
 		}
 	}

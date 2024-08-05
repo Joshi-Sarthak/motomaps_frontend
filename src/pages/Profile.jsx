@@ -494,7 +494,7 @@ export default function Profile() {
 													Account?
 												</h3>
 												<div className="flex justify-center">
-												<div className="flex ml-11 space-x-5">
+												<div className="flex space-x-5">
 													<button
 														type="button"
 														onClick={handleRevert}

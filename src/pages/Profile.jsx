@@ -452,7 +452,6 @@ export default function Profile() {
 									type="password"
 									id="password"
 									placeholder="Password"
-									className="bg-slate-100 rounded-lg p-3"
 									onChange={handleChange}
 								/>
 							</LabelInputContainer>

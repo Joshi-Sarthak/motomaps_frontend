@@ -632,7 +632,7 @@ export default function Profile() {
 					id="liked-section"
 					className="w-full lg:w-4/12 min-h-screen bg-stone-900 border-b lg:border-b-0 lg:border-r border-neutral-700"
 				>
-					<div className="max-w-md w-full ml-12 px-4 md:px-8 max-lg:mx-auto mt-2">
+					<div className="max-w-md w-full lg:ml-3 px-4 md:px-8 max-lg:mx-auto mt-2">
 						<h2 className="font-kanit text-xl text-neutral-200 mx-auto text-center">
 							My Posts
 						</h2>

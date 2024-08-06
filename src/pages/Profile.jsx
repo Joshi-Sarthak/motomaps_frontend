@@ -147,9 +147,9 @@ export default function Profile() {
 
 			// eslint-disable-next-line no-unused-vars
 			(error) => {
-				if (error.code === 'storage/unauthorized') {
+				if (error.code === "storage/unauthorized") {
 					setImageError("Only jpeg and png format allowed for images")
-				}else{
+				} else {
 					setImageError("Error Uploading Image")
 				}
 			},
@@ -329,7 +329,7 @@ export default function Profile() {
 			<div id="profile-section" className="flex flex-col lg:flex lg:flex-row">
 				<div className="w-full min-h-screen bg-stone-900 flex-1 flex flex-row lg:w-4/12 p-1">
 					<div className="max-w-md w-full max-sm:mx-4 mx-auto max-lg:pb-6 lg:pl-2 lg:pr-3 xl:pr-6 2xl:pr-8 shadow-input max-lg:mx-auto mt-2 border-b lg:border-b-0 lg:border-r border-neutral-700">
-						<h2 className="font-kanit old text-xl text-neutral-800 dark:text-neutral-200 mx-auto text-center">
+						<h2 className="font-kanit old text-xl  text-neutral-200 mx-auto text-center">
 							Profile
 						</h2>
 
@@ -459,7 +459,7 @@ export default function Profile() {
 
 							{!confirmUpdate && (
 								<button
-									className="relative border border-gray-800 flex items-center justify-center bg-gradient-to-br group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 dark:bg-zinc-800 w-full text-neutral-200 rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+									className="relative border border-gray-800 flex items-center justify-center bg-gradient-to-br group/btn  from-zinc-900 to-zinc-900  bg-zinc-800 w-full text-neutral-200 rounded-md h-10 font-medium  shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
 									type="button"
 									onClick={handleConfirmUpdate}
 									disabled={error}
@@ -472,10 +472,10 @@ export default function Profile() {
 							{confirmUpdate && (
 								<div className="fixed inset-0 backdrop-blur-sm bg-opacity-25 flex justify-center items-center z-[200]">
 									<div className="relative p-4 w-full max-w-md max-h-full">
-										<div className="relative bg-white rounded-lg shadow dark:bg-stone-900">
+										<div className="relative  rounded-lg shadow bg-stone-900">
 											<div className="p-4 md:p-5 text-center">
 												<svg
-													className="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+													className="mx-auto mb-4  w-12 h-12 text-gray-200"
 													aria-hidden="true"
 													xmlns="http://www.w3.org/2000/svg"
 													fill="none"
@@ -489,49 +489,49 @@ export default function Profile() {
 														d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
 													/>
 												</svg>
-												<h3 className="font-kanit mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+												<h3 className="font-kanit mb-5 text-lg font-normal  text-gray-400">
 													Are you sure you want to update this
 													Account?
 												</h3>
 												<div className="flex justify-center">
-												<div className="flex space-x-5">
-													<button
-														type="button"
-														onClick={handleRevert}
-														data-modal-hide="popup-modal"
-														className="font-kanit px-11 py-2 bg-transparent  border border-gray-800 hover:border-gray-400 dark:border-gray-700 dark:text-gray-400 text-black rounded-lg font-medium"
-													>
-														Revert
-													</button>
-													<button
-														data-modal-hide="popup-modal"
-														className="font-kanit hover:bg-[rgba(0,118,255,0.9)] px-3.5 py-1 bg-[#0070f3] rounded-md text-white transition duration-200 ease-linear font-medium"
-														type="submit"
-														disabled={isLoading}
-													>
-														{isLoading ? (
-															<>
-																<svg
-																	aria-hidden="true"
-																	className="inline w-5 h-5 text-gray-200 animate-spin dark:text-gray-600 fill-gray-600 dark:fill-gray-300"
-																	viewBox="0 0 100 101"
-																	fill="none"
-																	xmlns="http://www.w3.org/2000/svg"
-																>
-																	<path
-																		d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-																		fill="currentColor"
-																	/>
-																	<path
-																		d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-																		fill="currentFill"
-																	/>
-																</svg>
-															</>
-														) : (
-															<> Confirm Update</>
-														)}
-													</button>
+													<div className="flex space-x-5">
+														<button
+															type="button"
+															onClick={handleRevert}
+															data-modal-hide="popup-modal"
+															className="font-kanit px-11 py-2 bg-transparent  border  hover:border-gray-400 border-gray-700 text-gray-400  rounded-lg font-medium"
+														>
+															Revert
+														</button>
+														<button
+															data-modal-hide="popup-modal"
+															className="font-kanit hover:bg-[rgba(0,118,255,0.9)] px-3.5 py-1 bg-[#0070f3] rounded-md text-white transition duration-200 ease-linear font-medium"
+															type="submit"
+															disabled={isLoading}
+														>
+															{isLoading ? (
+																<>
+																	<svg
+																		aria-hidden="true"
+																		className="inline w-5 h-5  animate-spin text-gray-600  fill-gray-300"
+																		viewBox="0 0 100 101"
+																		fill="none"
+																		xmlns="http://www.w3.org/2000/svg"
+																	>
+																		<path
+																			d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+																			fill="currentColor"
+																		/>
+																		<path
+																			d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+																			fill="currentFill"
+																		/>
+																	</svg>
+																</>
+															) : (
+																<> Confirm Update</>
+															)}
+														</button>
 													</div>
 												</div>
 											</div>
@@ -545,7 +545,7 @@ export default function Profile() {
 							<div className="flex space-x-6 justify-between mt-5">
 								<button
 									onClick={handleConfirmDelete}
-									className="relative py-4 font-semibold flex items-center justify-center bg-gradient-to-br group/btn from-red-950 dark:from-red-900 dark:to-red-700 to-red-200 dark:bg-zinc-800 w-full text-neutral-200 rounded-md h-8 shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+									className="relative py-4 font-semibold flex items-center justify-center bg-gradient-to-br group/btn  from-red-900 to-red-700  bg-zinc-800 w-full text-neutral-200 rounded-md h-8 shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
 									type="button"
 									disabled={isLoading}
 								>
@@ -555,7 +555,7 @@ export default function Profile() {
 
 								<button
 									onClick={handleSignout}
-									className="relative py-4 font-semibold flex items-center justify-center bg-gradient-to-br group/btn from-red-950 dark:from-red-900 dark:to-red-700 to-red-200 dark:bg-zinc-800 w-full text-neutral-200 rounded-md h-8 shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+									className="relative py-4 font-semibold flex items-center justify-center bg-gradient-to-br group/btn  from-red-900 to-red-700  bg-zinc-800 w-full text-neutral-200 rounded-md h-8  shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
 									type="button"
 									disabled={isLoading}
 								>
@@ -568,10 +568,10 @@ export default function Profile() {
 						{confirmDelete && (
 							<div className="fixed inset-0 backdrop-blur-sm bg-opacity-25 flex justify-center items-center z-[200]">
 								<div className="relative p-4 w-full max-w-md max-h-full">
-									<div className="relative bg-white rounded-lg shadow dark:bg-stone-900">
+									<div className="relative  rounded-lg shadow bg-stone-900">
 										<div className="p-4 md:p-5 text-center">
 											<svg
-												className="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+												className="mx-auto mb-4  w-12 h-12 text-gray-200"
 												aria-hidden="true"
 												xmlns="http://www.w3.org/2000/svg"
 												fill="none"
@@ -585,7 +585,7 @@ export default function Profile() {
 													d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
 												/>
 											</svg>
-											<h3 className="font-kanit mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+											<h3 className="font-kanit mb-5 text-lg font-normal  text-gray-400">
 												Are you sure you want to DELETE this
 												account along with it`s posts
 												permanently?
@@ -595,7 +595,7 @@ export default function Profile() {
 													type="button"
 													onClick={handleRevert}
 													data-modal-hide="popup-modal"
-													className="font-kanit px-11 py-2 bg-transparent  border border-gray-800 hover:border-gray-400 dark:border-gray-700 dark:text-gray-400 text-black rounded-lg font-medium"
+													className="font-kanit px-11 py-2 bg-transparent  border  hover:border-gray-400 border-gray-700 text-gray-400 rounded-lg font-medium"
 												>
 													Revert
 												</button>
@@ -634,45 +634,48 @@ export default function Profile() {
 					className="w-full lg:w-4/12 min-h-screen flex-1 bg-stone-900 border-b lg:border-b-0 lg:border-r border-neutral-700"
 				>
 					<div className="max-w-md w-full mb-0 px-4 md:px-8 2xl:ml-3.5 max-lg:mx-auto mt-2">
-						<h2 className="font-kanit text-xl mr-1 text-neutral-800 dark:text-neutral-200 mx-auto xl:pr-4 text-center">
+						<h2 className="font-kanit text-xl mr-1  text-neutral-200 mx-auto xl:pr-4 text-center">
 							My Posts
 						</h2>
 
 						<div className="flex flex-row min-h-screen">
 							<div className="flex-grow bg-stone-900 flex flex-col lg:flex-row">
-									<div className="">
-										{myPosts.map((element) => (
-											<div className="my-2 flex justify-center" key={element.post_id}>
-												<Card
-													title={element.title}
-													description={element.description}
-													distance={element.distance}
-													image={
-														element.images &&
-														element.images.length > 0 &&
-														element.images[0]
-													}
-													likes={element.likes}
-													post_id={element.post_id}
-													user_id={element.user_id}
-													created_at={element.created_at}
-												/>
-											</div>
-										))}
+								<div className="">
+									{myPosts.map((element) => (
+										<div
+											className="my-2 flex justify-center"
+											key={element.post_id}
+										>
+											<Card
+												title={element.title}
+												description={element.description}
+												distance={element.distance}
+												image={
+													element.images &&
+													element.images.length > 0 &&
+													element.images[0]
+												}
+												likes={element.likes}
+												post_id={element.post_id}
+												user_id={element.user_id}
+												created_at={element.created_at}
+											/>
+										</div>
+									))}
 
-										{myPostsLen > 2 && (
-											<Link to="/myposts">
-												<button className="mb-2 mt-8 w-full bg-stone-950 hover:bg-stone-800 font-kanit font-medium rounded-lg text-sm px-5 py-2.5 text-white focus:outline-none transition-all duration-200">
-													View More
-												</button>
-											</Link>
-										)}
+									{myPostsLen > 2 && (
+										<Link to="/myposts">
+											<button className="mb-2 mt-8 w-full bg-stone-950 hover:bg-stone-800 font-kanit font-medium rounded-lg text-sm px-5 py-2.5 text-white focus:outline-none transition-all duration-200">
+												View More
+											</button>
+										</Link>
+									)}
 
-										{myPosts.length == 0 && (
-											<div className="flex justify-center items-center h-screen text-neutral-200 font-kanit font-light text-xl">
-												No posts yet :(
-											</div>
-										)}
+									{myPosts.length == 0 && (
+										<div className="flex justify-center items-center h-screen text-neutral-200 font-kanit font-light text-xl">
+											No posts yet :(
+										</div>
+									)}
 								</div>
 							</div>
 						</div>
@@ -684,45 +687,47 @@ export default function Profile() {
 					className="w-full lg:w-4/12 min-h-screen flex-1 bg-stone-900 "
 				>
 					<div className="max-w-md w-full mx-auto mb-0 px-4 md:px-8 flex-col justify-center max-lg:mx-auto mt-2">
-						<h2 className="font-kanit text-xl text-neutral-800 dark:text-neutral-200 mx-auto text-center">
+						<h2 className="font-kanit text-xl  text-neutral-200 mx-auto text-center">
 							Liked Posts
 						</h2>
 						<div className="flex flex-row min-h-screen">
 							<div className="flex-grow bg-stone-900 flex flex-col  lg:flex-row">
 								<div className="w-full flex flex-col my-1">
-									
-										{myLikedPosts.map((element) => (
-											<div className="my-2 flex justify-center" key={element.post_id}>
-												<Card
-													title={element.title}
-													description={element.description}
-													distance={element.distance}
-													image={
-														element.images &&
-														element.images.length > 0 &&
-														element.images[0]
-													}
-													likes={element.likes}
-													post_id={element.post_id}
-													user_id={element.user_id}
-													created_at={element.created_at}
-												/>
-											</div>
-										))}
+									{myLikedPosts.map((element) => (
+										<div
+											className="my-2 flex justify-center"
+											key={element.post_id}
+										>
+											<Card
+												title={element.title}
+												description={element.description}
+												distance={element.distance}
+												image={
+													element.images &&
+													element.images.length > 0 &&
+													element.images[0]
+												}
+												likes={element.likes}
+												post_id={element.post_id}
+												user_id={element.user_id}
+												created_at={element.created_at}
+											/>
+										</div>
+									))}
 
-										{myLikedPostsLen > 2 && (
-											<Link to="/likedposts">
-												<button className="mb-2 mt-8 w-full bg-stone-950 hover:bg-stone-800 font-kanit font-medium rounded-lg text-sm px-5 py-2.5 text-white focus:outline-none transition-all duration-200">
-													View More
-												</button>
-											</Link>
-										)}
+									{myLikedPostsLen > 2 && (
+										<Link to="/likedposts">
+											<button className="mb-2 mt-8 w-full bg-stone-950 hover:bg-stone-800 font-kanit font-medium rounded-lg text-sm px-5 py-2.5 text-white focus:outline-none transition-all duration-200">
+												View More
+											</button>
+										</Link>
+									)}
 
-										{myLikedPosts.length == 0 && (
-											<div className="flex justify-center items-center h-screen text-neutral-200 font-kanit font-light text-xl">
-												No posts liked yet :(
-											</div>
-										)}
+									{myLikedPosts.length == 0 && (
+										<div className="flex justify-center items-center h-screen text-neutral-200 font-kanit font-light text-xl">
+											No posts liked yet :(
+										</div>
+									)}
 								</div>
 							</div>
 						</div>

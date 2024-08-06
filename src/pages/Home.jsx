@@ -193,7 +193,7 @@ const Home = () => {
 					className="relative py-8 w-full h-[300px] bg-cover bg-center"
 					style={{ backgroundImage: `url(${backdrop})` }}
 				>
-					<h2 className="font-kanit font-thin mb-8 mt-4 text-xl text-center sm:text-5xl dark:text-white text-black">
+					<h2 className="font-kanit font-thin mb-8 mt-4 text-xl text-center sm:text-5xl text-white">
 						Search For Your Next Trip
 					</h2>
 					<PlaceholdersAndVanishInput
@@ -208,7 +208,7 @@ const Home = () => {
 				</div>
 
 				<div className="border-b md:border-b-0 bg-stone-900 h-auto lg:border-b mx-6 border-neutral-800">
-					<h3 className="font-kanit font-light mt-8 text-xl text-left ml-6 sm:text-2xl dark:text-white text-black">
+					<h3 className="font-kanit font-light mt-8 text-xl text-left ml-6 sm:text-2xl text-white ">
 						Most Popular
 					</h3>
 					<div className="w-full flex flex-col items-center">
@@ -254,7 +254,7 @@ const Home = () => {
 				</div>
 
 				<div className="bg-stone-900 h-auto mx-6">
-					<h3 className="font-kanit font-light mt-4 text-xl text-left ml-6 sm:text-2xl dark:text-white text-black">
+					<h3 className="font-kanit font-light mt-4 text-xl text-left ml-6 sm:text-2xl text-white ">
 						Near You
 					</h3>
 					<div className="w-full flex flex-col items-center">

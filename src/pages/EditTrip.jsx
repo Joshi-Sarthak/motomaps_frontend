@@ -122,7 +122,7 @@ export default function AddTrip() {
 					"state_changed",
 					() => {},
 					(error) => {
-						if (error.code === 'storage/unauthorized') {
+						if (error.code === "storage/unauthorized") {
 							setError("Only jpeg and png format allowed for images")
 						}
 						reject(error)
@@ -432,14 +432,18 @@ export default function AddTrip() {
 									loading ? "cursor-not-allowed" : ""
 								}`}
 								type="submit"
-								disabled={loading || error=="Only jpeg and png format allowed for images"}
+								disabled={
+									loading ||
+									error ==
+										"Only jpeg and png format allowed for images"
+								}
 							>
 								<div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-800 rounded-lg" />
 								<div className="px-8 py-2 bg-stone-900 rounded-[8px] relative group transition duration-400 text-white font-kanit hover:bg-transparent">
 									{loading ? (
 										<svg
 											aria-hidden="true"
-											className="inline w-5 h-5 text-gray-600 animate-spin dark:text-white fill-white dark:fill-gray-600"
+											className="inline w-5 h-5 animate-spin text-white fill-gray-600"
 											viewBox="0 0 100 101"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"

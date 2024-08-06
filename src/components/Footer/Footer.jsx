@@ -9,11 +9,11 @@ function Footer() {
 						to="/home"
 						className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
 					>
-						<span className="text-2xl lg:text-3xl whitespace-nowrap dark:text-white font-kanit font-medium">
+						<span className="text-2xl lg:text-3xl whitespace-nowrap text-white font-kanit font-medium">
 							MotoMaps.
 						</span>
 					</Link>
-					<ul className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 text-sm font-medium text-gray-500 dark:text-gray-400">
+					<ul className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 text-sm font-medium text-gray-400">
 						<li className="mb-2 sm:mb-0">
 							<Link to="/" className="hover:underline">
 								About
@@ -29,8 +29,8 @@ function Footer() {
 						</li>
 					</ul>
 				</div>
-				<hr className="my-6 border-gray-200 dark:border-gray-700" />
-				<span className="block text-sm text-gray-500 dark:text-gray-400 text-center">
+				<hr className="my-6 border-gray-700" />
+				<span className="block text-sm text-gray-400 text-center">
 					© 2024{" "}
 					<Link to="/home" className="hover:underline">
 						MotoMaps™

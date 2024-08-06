@@ -141,7 +141,7 @@ export default function Login() {
 					</span>
 				</div>
 				<div className="max-w-md w-full mx-[6rem] rounded-xl md:rounded-2xl p-4 md:p-8 shadow-input max-lg:mx-auto">
-					<h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200 text-center">
+					<h2 className="font-bold text-xl  text-neutral-200 text-center">
 						Login
 					</h2>
 
@@ -166,7 +166,7 @@ export default function Login() {
 						</LabelInputContainer>
 
 						<button
-							className="relative flex items-center justify-center bg-gradient-to-br group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 dark:bg-zinc-800 w-full text-neutral-200 rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+							className="relative flex items-center justify-center bg-gradient-to-br group/btn  from-zinc-900 to-zinc-900  bg-zinc-800 w-full text-neutral-200 rounded-md h-10 font-medium  shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
 							type="submit"
 							disabled={isLoading}
 						>
@@ -174,7 +174,7 @@ export default function Login() {
 								<>
 									<svg
 										aria-hidden="true"
-										className="inline w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-gray-600 dark:fill-gray-300"
+										className="inline w-6 h-6  animate-spin text-gray-600  fill-gray-300"
 										viewBox="0 0 100 101"
 										fill="none"
 										xmlns="http://www.w3.org/2000/svg"
@@ -199,17 +199,17 @@ export default function Login() {
 								{error}
 							</p>
 						)}
-						<div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
+						<div className="bg-gradient-to-r from-transparent  via-neutral-700 to-transparent my-8 h-[1px] w-full" />
 
 						<div className="flex flex-col space-y-4">
 							<button
-								className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
+								className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium  bg-zinc-900 shadow-[0px_0px_1px_1px_var(--neutral-800)]"
 								type="button"
 								onClick={handleGoogleSignUp}
 								disabled={isLoading}
 							>
-								<IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
-								<span className="text-neutral-700 dark:text-neutral-300 text-sm">
+								<IconBrandGoogle className="h-4 w-4  text-neutral-300" />
+								<span className=" text-neutral-300 text-sm">
 									Login with Google
 								</span>
 

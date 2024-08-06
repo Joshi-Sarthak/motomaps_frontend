@@ -21,7 +21,7 @@ function Footer() {
 						</li>
 						<li className="mb-2 sm:mb-0">
 							<a
-								href="mailto:sarthaksj02@gmail.com"
+								href="mailto:motomaps.service@gmail.com"
 								className="hover:underline"
 							>
 								Contact - motomaps.service@gmail.com

@@ -328,7 +328,7 @@ export default function Profile() {
 			<Navbar />
 			<div id="profile-section" className="flex flex-col lg:flex lg:flex-row">
 				<div className="w-full min-h-screen bg-stone-900 flex-1 flex flex-row lg:w-4/12 p-1">
-					<div className="max-w-md w-full max-sm:mx-4 mx-auto max-lg:pb-6 lg:pl-2 lg:pr-3 xl:pr-6 2xl:pr-8 shadow-input max-lg:mx-auto mt-2 border-b lg:border-b-0 lg:border-r border-neutral-700">
+					<div className="max-w-md w-full max-sm:mx-4 mx-auto max-lg:pb-6 lg:pl-2 lg:pr-3 xl:pr-6 2xl:pr-8 shadow-input max-lg:mx-auto mt-2 border-b lg:border-b lg:border-r border-neutral-700">
 						<h2 className="font-kanit old text-xl  text-neutral-200 mx-auto text-center">
 							Profile
 						</h2>
@@ -630,16 +630,16 @@ export default function Profile() {
 
 				<div
 					id="liked-section"
-					className="w-full lg:w-4/12 min-h-screen flex-1 bg-stone-900 border-b lg:border-b-0 lg:border-r border-neutral-700"
+					className="w-full lg:w-4/12 min-h-screen bg-stone-900 border-b lg:border-b-0 lg:border-r border-neutral-700"
 				>
-					<div className="max-w-md w-full mb-0 px-4 md:px-8 2xl:ml-3.5 max-lg:mx-auto mt-2">
-						<h2 className="font-kanit text-xl mr-1  text-neutral-200 mx-auto xl:pr-4 text-center">
+					<div className="max-w-md w-full ml-12 px-4 md:px-8 max-lg:mx-auto mt-2">
+						<h2 className="font-kanit text-xl text-neutral-200 mx-auto text-center">
 							My Posts
 						</h2>
 
-						<div className="flex flex-row min-h-screen">
-							<div className="flex-grow bg-stone-900 flex flex-col lg:flex-row">
-								<div className="">
+						<div className="flex flex-row min-h-screen w-full">
+							<div className="flex-grow justify-center bg-stone-900 flex flex-col lg:flex-row w-full">
+								<div className="w-full">
 									{myPosts.map((element) => (
 										<div
 											className="my-2 flex justify-center"
@@ -671,7 +671,7 @@ export default function Profile() {
 									)}
 
 									{myPosts.length == 0 && (
-										<div className="flex justify-center items-center h-screen text-neutral-200 font-kanit font-light text-xl">
+										<div className="flex justify-center w-full items-center h-screen text-neutral-200 font-kanit font-light text-xl">
 											No posts yet :(
 										</div>
 									)}
@@ -683,7 +683,7 @@ export default function Profile() {
 
 				<div
 					id="bookmark-section"
-					className="w-full lg:w-4/12 min-h-screen flex-1 bg-stone-900 "
+					className="w-full lg:w-4/12 min-h-screen bg-stone-900 "
 				>
 					<div className="max-w-md w-full mx-auto mb-0 px-4 md:px-8 flex-col justify-center max-lg:mx-auto mt-2">
 						<h2 className="font-kanit text-xl  text-neutral-200 mx-auto text-center">

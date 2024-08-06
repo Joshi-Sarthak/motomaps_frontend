@@ -7,7 +7,8 @@ const LoadingExplore = () => {
 		justifyContent: "center",
 		alignItems: "center",
 		height: "100vh",
-		width: "Full",
+		width: "100%",
+		transform: "translateY(-50px)",
 	}
 
 	const animationStyle = {
@@ -22,7 +23,7 @@ const LoadingExplore = () => {
 				style={animationStyle}
 				loop={true}
 			/>
-			<h2 className="font-kanit font-light text-white font-lg">
+			<h2 className="font-kanit font-light text-white text-lg">
 				Welcome to Motomaps.
 			</h2>
 		</div>

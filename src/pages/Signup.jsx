@@ -447,6 +447,16 @@ export default function Signup() {
 							Login
 						</Link>
 					</p>
+					<br></br>
+					<p className="text-sm max-w-s text-neutral-400">
+						Motomaps will not work if :
+					</p>
+					<p className="text-sm max-w-s text-neutral-400 font-thin">
+						1.&ensp;Location is disabled
+					</p>
+					<p className="text-sm max-w-s text-neutral-400 font-thin">
+						2. Third party cookies are disabled
+					</p>
 				</div>
 			</div>
 		</div>

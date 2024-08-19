@@ -1,8 +1,30 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# MotoMaps
 
-Currently, two official plugins are available:
+Motomaps is a platform for discovering and sharing the best routes and trails.
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technology Stack
+
+- Javascript
+- React
+- Node.js
+- Express.js
+- Maplibre
+- Firebase
+- PostgreSQL
+
+## Features
+
+- CRUD operations on both posts and users
+- Authentication using JWT and Firebase google-auth
+- State management using Redux
+- Share maps using maplibre directions API
+- Find trips near you using Geolocation API
+- Several other features like Search,OTP verification,Carousels,etc.
+
+## Authors
+
+- Sarthak Joshi
+- Atharva Bhore
+
+

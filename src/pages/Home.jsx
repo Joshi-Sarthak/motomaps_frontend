@@ -82,7 +82,7 @@ const Home = () => {
 		}
 
 		const sendRequest = async () => {
-			const res = await fetch(`https://motomaps-backend.onrender.com/checkauth`, {
+			const res = await fetch(`https://motomaps-backend-i6cp.onrender.com/checkauth`, {
 				method: "GET",
 				credentials: "include",
 			})
@@ -125,7 +125,7 @@ const Home = () => {
 		const loadAllRoutes = async (loc) => {
 			try {
 				const res = await fetch(
-					`https://motomaps-backend.onrender.com/trip/load-all-mostliked`,
+					`https://motomaps-backend-i6cp.onrender.com/trip/load-all-mostliked`,
 					{
 						method: "GET",
 						headers: {
@@ -151,7 +151,7 @@ const Home = () => {
 		const loadAllRoutesLimited = async () => {
 			try {
 				const res = await fetch(
-					`https://motomaps-backend.onrender.com/trip/load-all-mostliked-limited`,
+					`https://motomaps-backend-i6cp.onrender.com/trip/load-all-mostliked-limited`,
 					{
 						method: "GET",
 						headers: {

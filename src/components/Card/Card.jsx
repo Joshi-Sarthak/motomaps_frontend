@@ -16,7 +16,7 @@ const Card = ({ title, distance, image, user_id, post_id, likes, created_at }) =
 	useEffect(() => {
 		const isLiked = async () => {
 			const res = await fetch(
-				`https://motomaps-backend.onrender.com/trip/isLiked?user_id=${currentUser.user_id}&post_id=${post_id}`,
+				`https://motomaps-backend-i6cp.onrender.com/trip/isLiked?user_id=${currentUser.user_id}&post_id=${post_id}`,
 				{
 					method: "GET",
 					headers: {
@@ -36,7 +36,7 @@ const Card = ({ title, distance, image, user_id, post_id, likes, created_at }) =
 	useEffect(() => {
 		const userDetails = async () => {
 			const res = await fetch(
-				`https://motomaps-backend.onrender.com/trip/user-details?user_id=${user_id}`,
+				`https://motomaps-backend-i6cp.onrender.com/trip/user-details?user_id=${user_id}`,
 				{
 					method: "GET",
 					headers: {
@@ -57,7 +57,7 @@ const Card = ({ title, distance, image, user_id, post_id, likes, created_at }) =
 		if (isLiked) {
 			setIsLiked(false)
 			setLikeCount((prev) => prev - 1)
-			await fetch(`https://motomaps-backend.onrender.com/trip/unlike`, {
+			await fetch(`https://motomaps-backend-i6cp.onrender.com/trip/unlike`, {
 				method: "DELETE",
 				headers: {
 					"Content-Type": "application/json",
@@ -69,7 +69,7 @@ const Card = ({ title, distance, image, user_id, post_id, likes, created_at }) =
 			setIsLiked(true)
 			setLikeCount((prev) => prev + 1)
 
-			await fetch(`https://motomaps-backend.onrender.com/trip/like`, {
+			await fetch(`https://motomaps-backend-i6cp.onrender.com/trip/like`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

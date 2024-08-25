@@ -107,7 +107,7 @@ export default function AddTrip() {
 						}
 
 						const res = await fetch(
-							`https://motomaps-backend.onrender.com/trip/save`,
+							`https://motomaps-backend-i6cp.onrender.com/trip/save`,
 							{
 								method: "POST",
 								headers: {
@@ -150,7 +150,7 @@ export default function AddTrip() {
 
 	useEffect(() => {
 		const sendRequest = async () => {
-			const res = await fetch(`https://motomaps-backend.onrender.com/checkauth`, {
+			const res = await fetch(`https://motomaps-backend-i6cp.onrender.com/checkauth`, {
 				method: "GET",
 				credentials: "include",
 			})

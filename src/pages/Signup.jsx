@@ -59,7 +59,7 @@ export default function Signup() {
 
 		try {
 			const res = await fetch(
-				"https://motomaps-backend.onrender.com/auth/signup",
+				"https://motomaps-backend-i6cp.onrender.com/auth/signup",
 				{
 					method: "POST",
 					headers: {
@@ -102,7 +102,7 @@ export default function Signup() {
 			const result = await signInWithPopup(auth, provider)
 
 			const res = await fetch(
-				"https://motomaps-backend.onrender.com/auth/google",
+				"https://motomaps-backend-i6cp.onrender.com/auth/google",
 				{
 					method: "POST",
 					headers: {
@@ -143,7 +143,7 @@ export default function Signup() {
 			setIsOTPLoading(false)
 			return
 		}
-		const res = await fetch("https://motomaps-backend.onrender.com/auth/sendotp", {
+		const res = await fetch("https://motomaps-backend-i6cp.onrender.com/auth/sendotp", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -167,7 +167,7 @@ export default function Signup() {
 	const verifyOTP = async () => {
 		setIsOTPLoading(true)
 		const res = await fetch(
-			"https://motomaps-backend.onrender.com/auth/verifyotp",
+			"https://motomaps-backend-i6cp.onrender.com/auth/verifyotp",
 			{
 				method: "POST",
 				headers: {

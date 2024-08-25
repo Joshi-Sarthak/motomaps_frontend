@@ -35,7 +35,7 @@ export default function Login() {
 
 		try {
 			const res = await fetch(
-				"https://motomaps-backend.onrender.com/auth/login",
+				"https://motomaps-backend-i6cp.onrender.com/auth/login",
 				{
 					method: "POST",
 					headers: {
@@ -79,7 +79,7 @@ export default function Login() {
 			const result = await signInWithPopup(auth, provider)
 
 			const res = await fetch(
-				"https://motomaps-backend.onrender.com/auth/google",
+				"https://motomaps-backend-i6cp.onrender.com/auth/google",
 				{
 					method: "POST",
 					headers: {

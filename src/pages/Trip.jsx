@@ -43,7 +43,7 @@ const Trip = () => {
 
 	useEffect(() => {
 		const sendRequest = async () => {
-			const res = await fetch(`https://motomaps-backend.onrender.com/checkauth`, {
+			const res = await fetch(`https://motomaps-backend-i6cp.onrender.com/checkauth`, {
 				method: "GET",
 				credentials: "include",
 			})
@@ -62,7 +62,7 @@ const Trip = () => {
 	useEffect(() => {
 		const loadRoute = async () => {
 			const res = await fetch(
-				`https://motomaps-backend.onrender.com/trip/load/${id}`,
+				`https://motomaps-backend-i6cp.onrender.com/trip/load/${id}`,
 				{
 					method: "GET",
 					headers: {
@@ -164,7 +164,7 @@ const Trip = () => {
 	useEffect(() => {
 		const isLiked = async () => {
 			const res = await fetch(
-				`https://motomaps-backend.onrender.com/trip/isLiked?user_id=${currentUser.user_id}&post_id=${postId}`,
+				`https://motomaps-backend-i6cp.onrender.com/trip/isLiked?user_id=${currentUser.user_id}&post_id=${postId}`,
 				{
 					method: "GET",
 					headers: {
@@ -186,7 +186,7 @@ const Trip = () => {
 	useEffect(() => {
 		const userDetails = async () => {
 			const res = await fetch(
-				`https://motomaps-backend.onrender.com/trip/user-details?user_id=${routeData.user_id}`,
+				`https://motomaps-backend-i6cp.onrender.com/trip/user-details?user_id=${routeData.user_id}`,
 				{
 					method: "GET",
 					headers: {
@@ -214,7 +214,7 @@ const Trip = () => {
 		if (isLiked) {
 			setIsLiked(false)
 			setLikes((prev) => prev - 1)
-			await fetch(`https://motomaps-backend.onrender.com/trip/unlike`, {
+			await fetch(`https://motomaps-backend-i6cp.onrender.com/trip/unlike`, {
 				method: "DELETE",
 				headers: {
 					"Content-Type": "application/json",
@@ -229,7 +229,7 @@ const Trip = () => {
 			setIsLiked(true)
 			setLikes((prev) => prev + 1)
 
-			await fetch(`https://motomaps-backend.onrender.com/trip/like`, {
+			await fetch(`https://motomaps-backend-i6cp.onrender.com/trip/like`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -242,7 +242,7 @@ const Trip = () => {
 
 	const handleDelete = async () => {
 		const res = await fetch(
-			`https://motomaps-backend.onrender.com/trip/delete/${id}`,
+			`https://motomaps-backend-i6cp.onrender.com/trip/delete/${id}`,
 			{
 				method: "DELETE",
 				headers: {

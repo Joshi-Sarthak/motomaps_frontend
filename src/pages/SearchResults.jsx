@@ -28,7 +28,7 @@ const SearchResults = () => {
 
 	useEffect(() => {
 		const sendRequest = async () => {
-			const res = await fetch(`https://motomaps-backend.onrender.com/checkauth`, {
+			const res = await fetch(`https://motomaps-backend-i6cp.onrender.com/checkauth`, {
 				method: "GET",
 				credentials: "include",
 			})
@@ -74,7 +74,7 @@ const SearchResults = () => {
 				}
 
 				const res = await fetch(
-					`https://motomaps-backend.onrender.com/trip/search?query=${query}&radio=${option}`,
+					`https://motomaps-backend-i6cp.onrender.com/trip/search?query=${query}&radio=${option}`,
 					{
 						method: "GET",
 						headers: {

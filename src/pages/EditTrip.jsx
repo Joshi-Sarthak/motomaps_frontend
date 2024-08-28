@@ -42,7 +42,7 @@ export default function AddTrip() {
 		const sendRequest = async () => {
 			try {
 				const res = await fetch(
-					`https://motomaps-backend.onrender.com/checkauth`,
+					`https://motomaps-backend-i6cp.onrender.com/checkauth`,
 					{
 						method: "GET",
 						credentials: "include",
@@ -64,7 +64,7 @@ export default function AddTrip() {
 			if (id && !mapData.id) {
 				try {
 					const res = await fetch(
-						`https://motomaps-backend.onrender.com/trip/load/${id}`,
+						`https://motomaps-backend-i6cp.onrender.com/trip/load/${id}`,
 						{
 							method: "GET",
 							headers: {
@@ -177,7 +177,7 @@ export default function AddTrip() {
 						}
 
 						const res = await fetch(
-							`https://motomaps-backend.onrender.com/trip/update/${id}`,
+							`https://motomaps-backend-i6cp.onrender.com/trip/update/${id}`,
 							{
 								method: "PATCH",
 								headers: {

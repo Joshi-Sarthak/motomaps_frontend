@@ -44,7 +44,7 @@ export default function Profile() {
 	useEffect(() => {
 		const sendRequest = async () => {
 			setScreenLoading(true)
-			const res = await fetch(`https://motomaps-backend.onrender.com/checkauth`, {
+			const res = await fetch(`https://motomaps-backend-i6cp.onrender.com/checkauth`, {
 				method: "GET",
 				credentials: "include",
 			})
@@ -62,7 +62,7 @@ export default function Profile() {
 		const loadMyPosts = async () => {
 			try {
 				const res = await fetch(
-					`https://motomaps-backend.onrender.com/trip/load-myposts/${currentUser.user_id}`,
+					`https://motomaps-backend-i6cp.onrender.com/trip/load-myposts/${currentUser.user_id}`,
 					{
 						method: "GET",
 						headers: {
@@ -93,7 +93,7 @@ export default function Profile() {
 		const loadMyLikedPosts = async () => {
 			try {
 				const res = await fetch(
-					`https://motomaps-backend.onrender.com/trip/load-mylikedposts/${currentUser.user_id}`,
+					`https://motomaps-backend-i6cp.onrender.com/trip/load-mylikedposts/${currentUser.user_id}`,
 					{
 						method: "GET",
 						headers: {
@@ -202,7 +202,7 @@ export default function Profile() {
 		e.preventDefault()
 		try {
 			const res = await fetch(
-				`https://motomaps-backend.onrender.com/users/update/${currentUser.user_id}`,
+				`https://motomaps-backend-i6cp.onrender.com/users/update/${currentUser.user_id}`,
 				{
 					method: "POST",
 					headers: {
@@ -243,7 +243,7 @@ export default function Profile() {
 		setIsLoading(true)
 		try {
 			const res = await fetch(
-				`https://motomaps-backend.onrender.com/users/delete/${currentUser.user_id}`,
+				`https://motomaps-backend-i6cp.onrender.com/users/delete/${currentUser.user_id}`,
 				{
 					method: "DELETE",
 					headers: {
@@ -274,7 +274,7 @@ export default function Profile() {
 	const handleSignout = async () => {
 		setIsLoading(true)
 		try {
-			await fetch("https://motomaps-backend.onrender.com/users/signout")
+			await fetch("https://motomaps-backend-i6cp.onrender.com/users/signout")
 			dispatch(signOut())
 			setIsLoading(false)
 		} catch (error) {

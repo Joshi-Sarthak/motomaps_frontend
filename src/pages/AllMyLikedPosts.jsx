@@ -16,7 +16,7 @@ export default function AllRoutes() {
 
 	useEffect(() => {
 		const sendRequest = async () => {
-			const res = await fetch(`https://motomaps-backend.onrender.com/checkauth`, {
+			const res = await fetch(`https://motomaps-backend-i6cp.onrender.com/checkauth`, {
 				method: "GET",
 				credentials: "include",
 			})
@@ -36,7 +36,7 @@ export default function AllRoutes() {
 		const loadAllRoutes = async () => {
 			try {
 				const res = await fetch(
-					`https://motomaps-backend.onrender.com/trip/load-allmylikedposts/${currentUser.user_id}`,
+					`https://motomaps-backend-i6cp.onrender.com/trip/load-allmylikedposts/${currentUser.user_id}`,
 					{
 						method: "GET",
 						headers: {
@@ -58,6 +58,8 @@ export default function AllRoutes() {
 				setLoading(false)
 			}
 		}
+
+
 
 		loadAllRoutes()
 		// eslint-disable-next-line react-hooks/exhaustive-deps
